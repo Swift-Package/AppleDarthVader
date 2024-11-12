@@ -66,25 +66,17 @@ struct BundleTests {
     var exampleJSONData: Data!
     var weather: WeatherbitData!
 
-    @Test("仅仅用来测试使用Bundle.module访问当前模块资源文件进行解码的操作") func test() async throws {}
-}
+    init() {
+        // let bundle = Bundle(for: type(of: self))
+        let url = Bundle.module.url(forResource: "WeatherbitExample", withExtension: "json")! // 访问到当前测试目标内的WeatherbitExample.json文件
+        exampleJSONData = try! Data(contentsOf: url)
+        weather = try! JSONDecoder().decode(WeatherbitData.self, from: exampleJSONData)
+    }
 
-// override func setUpWithError() throws {
-//    // let bundle = Bundle(for: type(of: self))
-//    let url = Bundle.module.url(forResource: "WeatherbitExample", withExtension: "json")! // 访问到当前测试目标内的WeatherbitExample.json文件
-//    exampleJSONData = try! Data(contentsOf: url)
-//
-//    let decoder = JSONDecoder()
-//    weather = try! decoder.decode(WeatherbitData.self, from: exampleJSONData)
-// }
-//
-// func testExample() throws {
-//    XCTAssertEqual(weather.currentTemp, 24.19)
-//
-//    XCTAssertEqual(weather.iconName, "c03d")
-//
-//    XCTAssertEqual(weather.description, "Broken clouds")
-//
-//    // ⚠️Self
-//    XCTAssertEqual(Self.dateFormatter.string(from: weather.date), "08-28-2017")
-// }
+    @Test("仅仅用来测试使用Bundle.module访问当前模块资源文件进行解码的操作") func test() {
+        #expect(weather.currentTemp == 24.19)
+        #expect(weather.iconName == "c03d")
+        #expect(weather.description == "Broken clouds")
+        #expect(Self.dateFormatter.string(from: weather.date) == "08-28-2017")
+    }
+}

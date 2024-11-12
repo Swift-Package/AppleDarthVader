@@ -74,7 +74,7 @@
 }
 
 #pragma mark - 将JSON字符串转换成NSDictionary
-- (NSDictionary *)jsonToDictionary {
+- (nullable NSDictionary *)jsonToDictionary {
     if (self == nil) { return nil; }
     
     NSError *error;

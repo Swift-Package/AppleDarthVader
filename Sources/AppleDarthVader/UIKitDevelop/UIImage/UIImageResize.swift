@@ -18,17 +18,6 @@ public extension UIImage {
         }
     }
 
-    /// 生成指定尺寸的新图片
-    /// - Parameter newSize: 新尺寸
-    /// - Returns: 新尺寸的图片
-    func thumbnailOfSize(_ newSize: CGSize) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(size: newSize)
-        let thumbnail = renderer.image { _ in
-            draw(in: CGRect(origin: CGPoint.zero, size: newSize))
-        }
-        return thumbnail
-    }
-
     /// 重设图片尺寸 - 为了性能该方法建议在后台线程执行
     /// - Parameter newSize: 新尺寸
     /// - Returns: 新尺寸的图片

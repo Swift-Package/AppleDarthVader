@@ -28,8 +28,8 @@ struct Project: Codable {
 }
 
 struct BundleDecodeTests {
-    @Test func test() {
-        // ⚠️执行该测试时需要将扩展的Bundle.main改成Bundle.module以访问Skywalker模块里的Projects.json文件
+    @Test("测试Bundle的decode扩展") func test() {
+        // ⚠️执行该测试时需要将扩展的Bundle.main改成Bundle.module以访问AppleDarthVader模块里的Projects.json文件
         // let projects = Bundle.decode([Project].self, from: "Projects.json")
         // #expect(projects.first?.title == "Storm Viewer")
     }

@@ -28,7 +28,6 @@
     XCTAssertEqual(str99.hexData.decimalValue, 99);
     XCTAssertEqual(str99.hexData.lowercaseHexString, [NSString stringWithFormat:@"63"]);
     
-    
     NSString *str = [NSString stringWithFormat:@"1FFFFAB"];
     XCTAssertEqual(str.hexData.decimalValue, 33554347);
     XCTAssertEqual(str.hexData.lowercaseHexString, [NSString stringWithFormat:@"01ffffab"]);

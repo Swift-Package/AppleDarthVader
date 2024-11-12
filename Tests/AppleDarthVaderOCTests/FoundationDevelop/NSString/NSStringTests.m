@@ -15,8 +15,6 @@
 @implementation NSStringTests
 
 - (void)testExample {
-    XCTAssertEqual([NSString stringWithFormat:@"FF"].hexData.decimalValue, 255);
-    
     XCTAssertEqual(@"".isBlank, YES);
     XCTAssertEqual(@" ".isBlank, YES);
     XCTAssertEqual(@"  ".isBlank, YES);

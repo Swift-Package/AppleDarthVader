@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)base64ToOriginal;
 
 #pragma mark - 将JSON字符串转换成NSDictionary
-- (NSDictionary *)jsonToDictionary;
+- (nullable NSDictionary *)jsonToDictionary;
 
 #pragma mark - 将Data转换成JSON字符串
 + (NSString *)jsonStringFromData:(NSData *)data;

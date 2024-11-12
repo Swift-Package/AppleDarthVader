@@ -15,7 +15,7 @@ private enum Asset {
 }
 
 struct ImageAssetTests {
-    @Test func test() {
+    @Test("图片资源访问包装器测试") func test() {
         let image = UIImage(named: "DarthVader", in: Bundle.module, with: nil)
         #expect(image != nil)
         #expect(Asset.darthVaderIcon != nil)

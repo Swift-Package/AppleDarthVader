@@ -13,7 +13,7 @@ struct Solution {
 }
 
 struct ClampingRangeTests {
-    @Test func test() {
+    @Test("指定属性值边界的包装器测试") func test() {
         let s = Solution()
 
         #expect(s.pH == 7)

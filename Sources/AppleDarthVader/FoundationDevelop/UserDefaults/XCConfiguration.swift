@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// 用来读取Xcode配置文件的键值
+/// 这个类型用来读取Xcode配置文件的键值
 public enum XCConfiguration {
     static func stringValue(forKey key: String) -> String {
         guard let value = Bundle.main.object(forInfoDictionaryKey: key) as? String else {

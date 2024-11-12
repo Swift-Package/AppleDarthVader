@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// 属性变化时可以记录变化历史的包装器
 @propertyWrapper
 public struct Versioned<Value> {
     private var value: Value

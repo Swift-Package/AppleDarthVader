@@ -7,7 +7,6 @@
 
 import Foundation
 
-/// 指定属性值边界的包装器
 @propertyWrapper
 public struct ClampingRange<Value: Comparable> {
     private var value: Value

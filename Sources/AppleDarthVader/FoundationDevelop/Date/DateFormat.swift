@@ -8,7 +8,6 @@
 import Foundation
 
 public extension Date {
-    @available(iOS 15.0, *)
     var displayFormat: String {
         formatted(.dateTime
             .year(.defaultDigits)
@@ -20,7 +19,6 @@ public extension Date {
     }
 
     /// 一般情况下服务器接受的JSON形式
-    @available(iOS 15.0, *)
     var json: String {
         formatted(.iso8601)
     }

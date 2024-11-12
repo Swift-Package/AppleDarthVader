@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// 指定KeyPath排序规则的数组属性包装器使用介绍查看单元测试
+/// 指定KeyPath排序规则的数组属性包装器
 @propertyWrapper
 public struct SortedSelf<Element, SortProperty: Comparable> {
     private var array: [Element] = []

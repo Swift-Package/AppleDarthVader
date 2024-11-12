@@ -13,7 +13,7 @@ private struct People {
 }
 
 struct CapitalizedTests {
-    @Test func test() async throws {
+    @Test("首字母大写包装器测试") func test() {
         var p = People(name: "ss")
         #expect(p.name == "Ss")
 

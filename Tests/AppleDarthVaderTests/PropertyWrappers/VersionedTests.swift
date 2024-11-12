@@ -15,7 +15,7 @@ class ExpenseReport {
 }
 
 struct VersionedTests {
-    @Test func test() {
+    @Test("属性变化时可以记录变化历史的包装器测试") func test() {
         let testSuit = ExpenseReport()
 
         testSuit.state = .denied

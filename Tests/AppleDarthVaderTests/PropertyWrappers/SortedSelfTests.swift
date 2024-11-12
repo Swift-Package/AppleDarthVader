@@ -15,7 +15,7 @@ struct Person {
 }
 
 struct SortedSelfTests {
-    @Test func test() {
+    @Test("指定KeyPath排序规则的数组属性包装器测试") func test() {
         @SortedSelf(by: \.age) var people = [
             Person(firstName: "A", lastName: "A", age: 12),
             Person(firstName: "B", lastName: "B", age: 4),

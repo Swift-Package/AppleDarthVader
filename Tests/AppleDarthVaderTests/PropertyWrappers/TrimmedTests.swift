@@ -13,7 +13,7 @@ struct Post {
 }
 
 struct TrimmedTests {
-    @Test func test() {
+    @Test("去除字符串前后空格包装器测试") func test() {
         #expect(Post(title: " cccc ").title == "cccc")
     }
 }

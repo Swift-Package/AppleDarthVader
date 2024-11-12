@@ -21,10 +21,10 @@ let package = Package(
     targets: [
         // MARK: - 纯Swift目标 - 依赖纯Objective-C目标以复用Objective-C代码
         .target(name: "AppleDarthVader",
-                dependencies: [.target(name: "AppleDarthVaderOC"),
-                               "Then",
+                dependencies: ["Then",
                                "RxSwift",
-                               .product(name: "RxCocoa", package: "RxSwift")
+                               .target(name: "AppleDarthVaderOC"),
+                               .product(name: "RxCocoa", package: "RxSwift"),
                               ],
                 exclude: [],
                 resources: [.copy("FoundationDevelop/Bundle/Projects.json")],
@@ -44,25 +44,23 @@ let package = Package(
                 publicHeadersPath: "",
                 cSettings: []),
                 // cSettings: [.unsafeFlags(["-w"])]),// 压制所有编译警告
-        // MARK: - 纯Swift测试目标用来测试两个库
+        // MARK: - 纯Swift测试目标用来测试两个库(逐步迁移到Swift Testing框架)
         .testTarget(name: "AppleDarthVaderTests",
+                    dependencies: ["AppleDarthVader",
+                                   "AppleDarthVaderOC",
+                                  ],
+                    exclude: [],
+                    resources: [.copy("Resources/DarthVader.png"),
+                                .copy("FoundationDevelop/Bundle/WeatherbitExample.json"),],
+                    swiftSettings: [.swiftLanguageMode(.v5)]),
+        // MARK: - 纯Objective-C测试目标用来测试两个库
+        .testTarget(name: "AppleDarthVaderOCTests",
                     dependencies: ["AppleDarthVader",
                                    "AppleDarthVaderOC"
                                   ],
-                    resources: [.copy("Resources/DarthVader.png"),
-                                .copy("FoundationDevelop/Bundle/WeatherbitExample.json"),],
-                    swiftSettings: [
-                     .swiftLanguageMode(.v5)
-                    ]),
-        .testTarget(name: "AppleDarthVaderOCTests",
-                    dependencies: ["AppleDarthVader", "AppleDarthVaderOC"],
                     exclude: [],
                     resources: [],
                     cSettings: [])
     ],
-    swiftLanguageModes: [.version("6"), .v5]
+    swiftLanguageModes: [.v6, .v5]
 )
-
-// 检查AppleDarthVaderOC返回nil的ObjeciveC扩展添加nullable
-// 控件的小块UI常用属性代码片段
-// Swift枚举包含判断contains

@@ -26,7 +26,8 @@ public extension Subject where Output == String {
     }
 }
 
-/// 更高抽象度的扩展
+// MARK: - 更高抽象度的扩展
+
 public extension Subject {
     /// 向主题填充要发布的数据方便调试
     /// - Parameter data: 一个[(TimeInterval, Output)]  TimeInterval指定要发布的时间点  Output指定要发布的值
