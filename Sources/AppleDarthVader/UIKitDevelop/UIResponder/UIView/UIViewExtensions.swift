@@ -16,4 +16,12 @@ public extension UIView {
             addSubview(subView)
         }
     }
+    
+    func loopViewHierarchy(block: (_ view: UIView, _ stop: inout Bool) -> ()) {
+        var stop = false
+        block(self, &stop)
+        if !stop {
+            subviews.forEach { $0.loopViewHierarchy(block: block) }
+        }
+    }
 }

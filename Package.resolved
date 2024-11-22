@@ -1,5 +1,5 @@
 {
-  "originHash" : "2dfce56a3ac13b886701efc65a436f4632d8dc26c093524dce25abaa0b8bac05",
+  "originHash" : "d9f15c2322fdb56b969fa555efd5ccffa51149c7f48addf33fe8529b10b41f79",
   "pins" : [
     {
       "identity" : "rxswift",
@@ -16,7 +16,7 @@
       "location" : "https://github.com/nicklockwood/SwiftFormat",
       "state" : {
         "branch" : "main",
-        "revision" : "010d5be35f5fab0d98cb2d48e8c7dbb7bffd9c71"
+        "revision" : "77e9fee64049e944dbb56b6cbd3a0fcd338be57a"
       }
     },
     {

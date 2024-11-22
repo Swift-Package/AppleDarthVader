@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "EF04E029-1052-4481-8138-53F0D16D205D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AppleDarthVaderOCTests",
+        "name" : "AppleDarthVaderOCTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AppleDarthVaderTests",
+        "name" : "AppleDarthVaderTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -8,7 +8,7 @@
 import Foundation
 
 public extension String {
-    // MARK: - Bundle.module必须在包的Target声明resources定义才会生成
+    // MARK: - 必须在包的Target声明resources参数Bundle.module的定义才会生成
 
     func localized() -> String {
         return NSLocalizedString(self, tableName: "Localizable", bundle: Bundle.module, value: self, comment: self)
@@ -16,5 +16,11 @@ public extension String {
 
     func truncatedPrefix(_ maxLength: Int, using truncator: String = "...") -> String {
         "\(prefix(maxLength))\(truncator)"
+    }
+    
+    /// 将字符串首字母大写
+    /// - Returns: 首字母大写的字符串
+    func capitalizeFirst() -> String {
+        return "\(prefix(1).capitalized)\(dropFirst)"
     }
 }

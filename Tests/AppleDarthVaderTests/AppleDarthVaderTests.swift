@@ -4,7 +4,7 @@ import Testing
 import XCTest
 
 struct AppleDarthVaderTests {
-    @Test("测试Core Foundation字节序转换工具函数") func example() {
+    @Test("测试Core Foundation字节序转换工具函数", .tags(.format)) func example() {
         #expect(CFByteOrderGetCurrent() != 0)
         #expect(CFSwapInt32HostToBig(305_419_896) == 2_018_915_346)
         #expect(CFSwapInt32HostToLittle(4_043_309_055) == 4_043_309_055)
@@ -19,4 +19,9 @@ struct AppleDarthVaderTests {
         // f0ff ffff
         // ffff fff0
     }
+}
+
+// MARK: - 所有的测试标签
+extension Tag {
+    @Tag static var format: Self
 }

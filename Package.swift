@@ -16,7 +16,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/devxoul/Then", branch: "master"),
         .package(url: "https://github.com/ReactiveX/RxSwift", branch: "main"),
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", branch: "main"),// 代码格式化工具 - 在Skywalker上下文菜单中使用SwiftFormatPlugin
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", branch: "main"),// 代码格式化工具 - 在AppleDarthVader上下文菜单中使用SwiftFormatPlugin
     ],
     targets: [
         // MARK: - 纯Swift目标 - 依赖纯Objective-C目标以复用Objective-C代码
