@@ -8,8 +8,6 @@
 import UIKit
 
 class CustomUITableViewCell: UITableViewCell {
-    static let reuseIdentifier = "CustomUICollectionViewCellIdentifier"
-    
     @available(*, unavailable)
     required init?(coder _: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
@@ -28,7 +26,7 @@ class CustomUITableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        let imageWidthRatio: CGFloat = traitCollection.userInterfaceIdiom == .pad ? 1 / 8 : 1 / 4
+        let _: CGFloat = traitCollection.userInterfaceIdiom == .pad ? 1 / 8 : 1 / 4
     }
 
     override func updateConstraints() {

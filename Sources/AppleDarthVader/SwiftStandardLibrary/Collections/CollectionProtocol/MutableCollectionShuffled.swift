@@ -20,3 +20,11 @@ public extension MutableCollection {
         }
     }
 }
+
+public extension Collection where Element: Hashable {
+    // MARK: - 返回没有重复元素的集合
+
+    func uniqued() -> [Element] {
+        Array(Set(self))
+    }
+}

@@ -38,6 +38,23 @@ public extension UIImage {
         UIGraphicsEndImageContext()
         return newImage!
     }
+
+    func resizedToMatchScreenWidth() -> UIImage? {
+        let screenWidth = UIScreen.main.bounds.width
+        let widthScale = screenWidth / size.width
+        let newHeight = size.height * widthScale
+
+        UIGraphicsBeginImageContext(CGSize(width: screenWidth, height: newHeight))
+        draw(in: CGRect(x: 0, y: 0, width: screenWidth, height: newHeight))
+
+        if let resizedImage = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            return resizedImage
+        } else {
+            UIGraphicsEndImageContext()
+            return nil
+        }
+    }
 }
 
 /**

@@ -5,6 +5,8 @@
 //  Created by 杨俊艺 on 2024/11/4.
 //
 
+// 该RxSwift扩展来自kodeco网站 - RxSwift书籍教程项目 Combinestagram
+
 import RxSwift
 import UIKit
 
@@ -26,7 +28,5 @@ extension UIViewController {
 /* alert(title: "未授权", text: "请重新授权")
  .asObservable()
  .take(.seconds(5), scheduler: MainScheduler.instance)// 5秒后自动关闭
- .subscribe { [weak self] in
-     self?.dismiss(animated: true)
-     self?.navigationController?.popViewController(animated: true)
- }.disposed(by: bag) */
+ .subscribe()
+ .disposed(by: bag) */

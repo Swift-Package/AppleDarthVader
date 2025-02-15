@@ -16,8 +16,8 @@ public extension UIView {
             addSubview(subView)
         }
     }
-    
-    func loopViewHierarchy(block: (_ view: UIView, _ stop: inout Bool) -> ()) {
+
+    @nonobjc func loopViewHierarchy(block: (_ view: UIView, _ stop: inout Bool) -> Void) {
         var stop = false
         block(self, &stop)
         if !stop {

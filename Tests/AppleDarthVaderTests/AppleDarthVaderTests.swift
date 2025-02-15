@@ -3,6 +3,7 @@
 import Testing
 import XCTest
 
+@Suite(.serialized)
 struct AppleDarthVaderTests {
     @Test("测试Core Foundation字节序转换工具函数", .tags(.format)) func example() {
         #expect(CFByteOrderGetCurrent() != 0)
@@ -19,9 +20,24 @@ struct AppleDarthVaderTests {
         // f0ff ffff
         // ffff fff0
     }
+
+    @Test("Bug标记", .bug("https://example.com/issues/9999", id: 9999, "Title")) func bufReport() {}
+
+    @Test(.enabled(if: TestCondition.isOnline)) func enabledConditionTest() {}
+
+    @Test(.disabled("Currently broken")) func skipTest() {}
+
+    @Test("系统限制") @available(iOS 18, *) func system() {}
+
+    @Test("时间性能", .timeLimit(.minutes(3))) func timeLimitTest() {}
 }
 
 // MARK: - 所有的测试标签
+
 extension Tag {
     @Tag static var format: Self
+}
+
+enum TestCondition {
+    static let isOnline = false
 }

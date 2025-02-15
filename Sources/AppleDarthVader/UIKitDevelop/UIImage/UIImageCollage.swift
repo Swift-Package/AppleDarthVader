@@ -5,6 +5,8 @@
 //  Created by 杨俊艺 on 2024/11/4.
 //
 
+// https://www.kodeco.com/books/rxswift-reactive-programming-with-swift/v4.0/chapters/4-observables-subjects-in-practice
+
 import UIKit
 
 extension Array where Element == UIImage {
