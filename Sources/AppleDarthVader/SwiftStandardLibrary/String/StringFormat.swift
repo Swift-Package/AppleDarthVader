@@ -21,6 +21,6 @@ public extension String {
     /// 将字符串首字母大写
     /// - Returns: 首字母大写的字符串
     func capitalizeFirst() -> String {
-        return "\(prefix(1).capitalized)\(dropFirst)"
+        "\(prefix(1).capitalized)\(String(describing: dropFirst))"
     }
 }

@@ -62,7 +62,7 @@ class PanDirectionGestureRecognizer: UIPanGestureRecognizer {
     }
 }
 
-// 扩展Block
+// MARK: - 扩展Block
 typealias GestureRecognizerHandle = (_ recognizer: UIGestureRecognizer) -> Void
 
 class GesHandleWrapper: NSObject {
@@ -78,14 +78,14 @@ class GesHandleWrapper: NSObject {
 }
 
 extension UIGestureRecognizer {
-    static var UIGestureRecognizerAssociatedKey = "UIGestureRecognizerAssociatedKey"
+    private static let UIGestureRecognizerAssociatedKey = UnsafeRawPointer(bitPattern: ObjectIdentifier(UIGestureRecognizer.self).hashValue)!
 
     var handleWrapper: GesHandleWrapper? {
         get {
-            return objc_getAssociatedObject(self, &UIGestureRecognizer.UIGestureRecognizerAssociatedKey) as? GesHandleWrapper
+            objc_getAssociatedObject(self, UIGestureRecognizer.UIGestureRecognizerAssociatedKey) as? GesHandleWrapper
         }
         set {
-            objc_setAssociatedObject(self, &UIGestureRecognizer.UIGestureRecognizerAssociatedKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, UIGestureRecognizer.UIGestureRecognizerAssociatedKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 

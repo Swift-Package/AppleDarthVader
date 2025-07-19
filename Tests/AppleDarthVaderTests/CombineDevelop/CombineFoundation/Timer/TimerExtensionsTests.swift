@@ -13,6 +13,7 @@ import UIKit
 struct TimerExtensionsTests {
     private var observables: [AnyCancellable] = []
 
+    @MainActor
     @Test mutating func test() {
         let array: [ImagePublisher] = ["some", UIColor.white]
         Timer.loop(every: 4, over: array.count)

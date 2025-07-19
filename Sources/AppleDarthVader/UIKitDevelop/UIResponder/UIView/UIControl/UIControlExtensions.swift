@@ -22,24 +22,18 @@ private class ControlClosureWrapper {
 }
 
 public extension UIControl {
-    private static var ControlClosureAssociatedKey = "ControlClosureAssociatedKey"
+    typealias Action = (_ sender: UIControl) -> Void
+
+    private static let ControlClosureAssociatedKey = UnsafeRawPointer(bitPattern: "ControlClosureAssociatedKey".hashValue)!
 
     private var closureWrapper: [UInt: ControlClosureWrapper] {
         get {
-            if let wrapper = objc_getAssociatedObject(self, &UIControl.ControlClosureAssociatedKey) as? [UInt: ControlClosureWrapper] {
-                return wrapper
-            } else {
-                let wrapper = [UInt: ControlClosureWrapper]()
-                self.closureWrapper = wrapper
-                return wrapper
-            }
+            objc_getAssociatedObject(self, UIControl.ControlClosureAssociatedKey) as? [UInt: ControlClosureWrapper] ?? [:]
         }
         set {
-            objc_setAssociatedObject(self, &UIControl.ControlClosureAssociatedKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, UIControl.ControlClosureAssociatedKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-
-    typealias Action = (_ sender: UIControl) -> Void
 
     func addEventAction(for controlEvent: UIControl.Event, action: @escaping Action) {
         let wrapperValue = ControlClosureWrapper(controlEvent, action)

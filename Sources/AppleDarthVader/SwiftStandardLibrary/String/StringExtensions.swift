@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RegexBuilder
 
 public extension String {
     /// 是不是email格式
@@ -36,5 +37,12 @@ public extension String {
             startIndex = endIndex
         }
         return results.map { String($0) }
+    }
+    
+    /// 在一个字符串中查找浮点数 - WWDC25 - Xcode 新功能
+    /// - Returns: 找到的浮点数结果集
+    func scanForFloatingPointNumbers() -> [Regex<Substring>.Match] {
+        // return self.matches(of: /[+-]?[0-9]*[.][0-9]+/)
+        []
     }
 }

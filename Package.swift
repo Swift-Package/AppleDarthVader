@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -32,6 +32,15 @@ let package = Package(
                                 // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
                                 .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
                                 .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release)),
+                                .unsafeFlags([
+                                    "-Xfrontend",
+                                    "-warn-long-function-bodies=50",
+                                    "-Xfrontend",
+                                    "-warn-long-expression-type-checking=50"
+                                ]),
+                                //.treatAllWarnings(as: .error)
+                                //.treatWarning("DeprecatedDeclaration", as: .warning),
+                                //.treatWarning("StrictMemorySafety", as: .error),
                                ]
                 // linkerSettings: [.linkedFramework("CFNetwork", .when(platforms: [.iOS], configuration: nil))]
                ),
@@ -41,7 +50,7 @@ let package = Package(
                 path: "Sources/AppleDarthVaderOC",
                 exclude: [],
                 resources: [],
-                publicHeadersPath: "",
+                publicHeadersPath: ".",// 公共头文件的路径设置为当前目录
                 cSettings: []),
                 // cSettings: [.unsafeFlags(["-w"])]),// 压制所有编译警告
         // MARK: - 纯Swift测试目标用来测试两个库(逐步迁移到Swift Testing框架)
