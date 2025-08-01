@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "AppleDarthVader",
-    defaultLocalization: "zh",
+    defaultLocalization: "en",
     platforms: [.iOS(.v18), .macOS(.v15), .watchOS(.v11), .tvOS(.v18), .visionOS(.v2)],
     products: [
         // MARK: - 纯Swift库
