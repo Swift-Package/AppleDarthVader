@@ -24,27 +24,36 @@ public struct CustomButtonStyle: ButtonStyle {
 }
 
 // MARK: - 自定义按钮样式与显性动画和隐性动画
-struct CustomButtonStyleContentView: View {
+public struct CustomButtonStyleContentView: View {
     
     @State var isStarted = false
     @State var isPaused = false
     
-    var body: some View {
+    public init(isStarted: Bool = false, isPaused: Bool = false) {
+        self.isStarted = isStarted
+        self.isPaused = isPaused
+    }
+    
+    public var body: some View {
         VStack {
             if isPaused {
                 HStack {
-                    Button("停止") {
+                    Button(action: {
                         isStarted = false
                         isPaused = false
-                    }
+                    }, label: {
+                        Text("Stop", bundle: .module)
+                    })
                     .buttonStyle(CustomButtonStyle(backgroundColor: .red))
-                    Button("继续") {
+                    Button(action: {
                         isPaused = false
-                    }
+                    }, label: {
+                        Text("Continue", bundle: .module)
+                    })
                     .buttonStyle(CustomButtonStyle(backgroundColor: .green))
                 }
             } else {
-                Button(isStarted ? "暂停" : "开始") {
+                Button(action: {
                     withAnimation(.easeIn(duration: 1)) {// 显性动画
                         if !isStarted {
                             isStarted = true
@@ -52,7 +61,10 @@ struct CustomButtonStyleContentView: View {
                             isPaused = true
                         }
                     }
-                }
+                }, label: {
+                    isStarted ? Text("Pause", bundle: .module) : Text("Start", bundle: .module)
+                })
+                
                 .buttonStyle(CustomButtonStyle(backgroundColor: .blue))
                 //.transition(.scale.combined(with: .slide))// 转场动画
                 .transition(.asymmetric(insertion: .slide, removal: .scale))// 非对称转场动画
@@ -64,4 +76,5 @@ struct CustomButtonStyleContentView: View {
 
 #Preview {
     CustomButtonStyleContentView()
+        .environment(\.locale, .init(identifier: "zh-Hans"))
 }

@@ -26,8 +26,10 @@ let package = Package(
                                .target(name: "AppleDarthVaderOC"),
                                .product(name: "RxCocoa", package: "RxSwift"),
                               ],
-                exclude: [],
-                resources: [.copy("FoundationDevelop/Bundle/Projects.json")],
+                exclude: [],// 需要排除的文件
+                resources: [
+                    .copy("FoundationDevelop/Bundle/Projects.json")
+                ],
                 swiftSettings: [.swiftLanguageMode(.v5),
                                 // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
                                 .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
@@ -73,3 +75,24 @@ let package = Package(
     ],
     swiftLanguageModes: [.v6, .v5]
 )
+//
+//public final class TouchUISwitchRequest: Request {
+//    
+//    public private(set) var touchOn: Bool
+//    
+//    public init(_ touchOn: Bool) {
+//        self.touchOn = touchOn
+//        super.init(Command.COMMAND_TOUCH_UI)
+//    }
+//    
+//    public override func getPayload() -> Data {
+//        let value: UInt8 = touchOn ? 0x01 : 0x00
+//        return Data([value])
+//    }
+//}
+
+//extension Command {
+//    
+//    // 新增
+//    public static let COMMAND_TOUCH_UI: UInt8           = 0x33 // TouchUI
+//}

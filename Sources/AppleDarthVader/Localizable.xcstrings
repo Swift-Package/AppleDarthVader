@@ -1,0 +1,94 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Continue" : {
+      "localizations" : {
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        }
+      }
+    },
+    "Data to String conversion error" : {
+
+    },
+    "Pause" : {
+      "localizations" : {
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂停"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "localizations" : {
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始"
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "localizations" : {
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止"
+          }
+        }
+      }
+    },
+    "String to Data conversion error" : {
+
+    },
+    "Unhandled Error" : {
+
+    },
+    "一级页面" : {
+
+    },
+    "传递过来数据是 %@" : {
+
+    },
+    "传递过来的字符串值 %@" : {
+
+    },
+    "传递过来的整数值 %lld" : {
+
+    },
+    "漫威英雄" : {
+
+    },
+    "漫威英雄收藏页面" : {
+
+    },
+    "简单的页面" : {
+
+    },
+    "跳转" : {
+
+    },
+    "跳转传递字符串" : {
+
+    },
+    "跳转传递整数值" : {
+
+    },
+    "跳转过去" : {
+
+    },
+    "返回" : {
+
+    },
+    "返回上一级" : {
+
+    }
+  },
+  "version" : "1.0"
+}
