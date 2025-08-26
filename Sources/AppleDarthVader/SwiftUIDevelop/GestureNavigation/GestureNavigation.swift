@@ -9,14 +9,14 @@ import UIKit
 import SwiftUI
 
 // MARK: - 解决自定义返回按钮导致侧滑返回手势失效的问题
-//extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
-//    open override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        interactivePopGestureRecognizer?.delegate = self
-//    }
-//    
-//    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        viewControllers.count > 1
-//    }
-//}
+extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        viewControllers.count > 1
+    }
+}
