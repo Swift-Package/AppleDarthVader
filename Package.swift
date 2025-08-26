@@ -16,6 +16,13 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/devxoul/Then", branch: "master"),
         .package(url: "https://github.com/ReactiveX/RxSwift", branch: "main"),
+        .package(url: "https://github.com/SnapKit/SnapKit", branch: "develop"),
+        .package(url: "https://github.com/airbnb/lottie-ios", branch: "master"),
+        .package(url: "https://github.com/SDWebImage/SDWebImage", branch: "master"),
+        .package(url: "https://github.com/AFNetworking/AFNetworking", branch: "master"),
+        .package(url: "https://github.com/pointfreeco/swift-navigation", branch: "main"),
+        .package(url: "https://github.com/SVProgressHUD/SVProgressHUD", branch: "master"),
+        .package(url: "https://github.com/hackiftekhar/IQKeyboardManager", branch: "master"),
         .package(url: "https://github.com/nicklockwood/SwiftFormat", branch: "main"),// 代码格式化工具 - 在AppleDarthVader上下文菜单中使用SwiftFormatPlugin
     ],
     targets: [
