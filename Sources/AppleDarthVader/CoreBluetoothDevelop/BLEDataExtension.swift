@@ -7,25 +7,25 @@
 
 import Foundation
 
-extension UInt8 {
+public extension UInt8 {
     var intValue: Int {
         return Int(self)
     }
 }
 
-extension UInt16 {
+public extension UInt16 {
     var intValue: Int {
         return Int(self)
     }
 }
 
-extension UInt32 {
+public extension UInt32 {
     var intValue: Int {
         return Int(self)
     }
 }
 
-extension Data {
+public extension Data {
     // MARK: - 获取指定位置的单个字节表示的数值
     func getTargetByte(at offset: Int) -> UInt8 {
         return (getBytes(at: offset)?.first!)!
@@ -88,7 +88,7 @@ extension Data {
     }
 }
 
-extension String {
+public extension String {
     // MARK: - 格式化当前字符串为 MAC 地址样式
     var formatMacAddress: String {
         let clean = self.replacingOccurrences(of: ":", with: "")

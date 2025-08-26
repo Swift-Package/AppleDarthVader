@@ -1,6 +1,15 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "⭐️⭐️⭐️⭐️⭐️" : {
+
+    },
+    "5 Stars" : {
+
+    },
+    "Avocado Toast" : {
+
+    },
     "Continue" : {
       "localizations" : {
         "zh" : {
@@ -12,6 +21,9 @@
       }
     },
     "Data to String conversion error" : {
+
+    },
+    "Ingredients: Avocado, Almond Butter, Bread" : {
 
     },
     "Pause" : {
@@ -69,6 +81,9 @@
 
     },
     "简单的页面" : {
+
+    },
+    "请输入文本" : {
 
     },
     "跳转" : {
