@@ -5,6 +5,9 @@
 //  Created by 杨俊艺 on 2025/8/31.
 //
 
+// 教程来源: - DONT'T Make this MISTAKE || StateObject vs ObservedObject | What's the Difference? - AppStuff
+// 教程来源: - SwiftUI State Management: StateObject vs ObservedObject with ObservableObject - Yogesh Patel
+
 import SwiftUI
 
 class CounterViewModel: ObservableObject {
@@ -55,7 +58,7 @@ struct ObservedObjectView: View {
             Button {
                 viewModel.increaseCount()
             } label: {
-                Text("Increase ViewModel Count")
+                Text("Increase @ObservedObject ViewModel Count")
             }
         }
     }
@@ -73,7 +76,28 @@ struct ViaStateObjectView: View {
             Button {
                 viewModel.increaseCount()
             } label: {
-                Text("Increase ViewModel Count")
+                Text("Increase @StateObject ViewModel Count")
+            }
+            
+            ViaStateObjectChildView(viewModel: viewModel)
+                .padding()
+                .background(.gray)
+        }
+    }
+}
+
+struct ViaStateObjectChildView: View {
+    
+    @ObservedObject var viewModel: CounterViewModel// ⚠️子视图用 @ObservedObject 接收父视图传递过来的数据, 使用 @StateObject 也可以但是不推荐
+    
+    var body: some View {
+        VStack {
+            Text("Count: \(viewModel.count)")
+            
+            Button {
+                viewModel.increaseCount()
+            } label: {
+                Text("Increase @StateObject ViewModel Count")
             }
         }
     }
