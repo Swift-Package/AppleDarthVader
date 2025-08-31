@@ -28,7 +28,7 @@ struct NavigationPath: View {
                     .toolbar {
                         ToolbarItem(placement: .navigation) {
                             Button {
-                                path.popLast()
+                                let _ = path.popLast()
                             } label: {
                                 HStack {
                                     Image(systemName: "chevron.left")

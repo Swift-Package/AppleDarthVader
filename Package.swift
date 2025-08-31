@@ -43,9 +43,9 @@ let package = Package(
                                 .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release)),
                                 .unsafeFlags([
                                     "-Xfrontend",
-                                    "-warn-long-function-bodies=50",
+                                    "-warn-long-function-bodies=1000",
                                     "-Xfrontend",
-                                    "-warn-long-expression-type-checking=50"
+                                    "-warn-long-expression-type-checking=1000"
                                 ]),
                                 //.treatAllWarnings(as: .error)
                                 //.treatWarning("DeprecatedDeclaration", as: .warning),
