@@ -35,6 +35,48 @@
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ContinuousEvolution"
+               BuildableName = "ContinuousEvolution"
+               BlueprintName = "ContinuousEvolution"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "PureCLibrary"
+               BuildableName = "PureCLibrary"
+               BlueprintName = "PureCLibrary"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "WWDCEsoterica"
+               BuildableName = "WWDCEsoterica"
+               BlueprintName = "WWDCEsoterica"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -66,6 +108,26 @@
                BlueprintIdentifier = "AppleDarthVaderTests"
                BuildableName = "AppleDarthVaderTests"
                BlueprintName = "AppleDarthVaderTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "PureCLibraryTests"
+               BuildableName = "PureCLibraryTests"
+               BlueprintName = "PureCLibraryTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CombineLearnTests"
+               BuildableName = "CombineLearnTests"
+               BlueprintName = "CombineLearnTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
