@@ -39,10 +39,9 @@ public extension String {
         return results.map { String($0) }
     }
     
-    /// 在一个字符串中查找浮点数 - WWDC25 - Xcode 新功能
+    /// 在一个字符串中查找浮点数 - WWDC25 - Xcode 新功能 (Apple官方演示的实现没有try!)
     /// - Returns: 找到的浮点数结果集
     func scanForFloatingPointNumbers() -> [Regex<Substring>.Match] {
-        // return self.matches(of: /[+-]?[0-9]*[.][0-9]+/)
-        []
+        return try! self.matches(of: Regex("/[+-]?[0-9]*[.][0-9]+/"))
     }
 }
