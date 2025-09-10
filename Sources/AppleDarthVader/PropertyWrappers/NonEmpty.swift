@@ -25,4 +25,4 @@ private struct User {
     @NonEmpty var userName: String
 }
 
-func login(@NonEmpty _ userName: String) {}
+func login(@NonEmpty _: String) {}

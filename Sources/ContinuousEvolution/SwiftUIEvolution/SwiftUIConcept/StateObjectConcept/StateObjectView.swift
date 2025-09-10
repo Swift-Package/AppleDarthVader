@@ -8,24 +8,22 @@
 import SwiftUI
 
 class StateObjectViewModel: ObservableObject {
-    
     @Published var heroName: [String] = []
-    
+
     init() {
         heroName = ["Thor", "Ironman"]
     }
-    
+
     func addNewHero(_ name: String) {
         heroName.append(name)
     }
 }
 
 struct StateObjectView: View {
-    
-    @StateObject var viewModel: StateObjectViewModel = StateObjectViewModel()
-    
+    @StateObject var viewModel: StateObjectViewModel = .init()
+
     @State var path: [String] = []
-    
+
     var body: some View {
         NavigationStack(path: $path) {
             List(viewModel.heroName, id: \.self) { hero in
@@ -54,9 +52,8 @@ struct StateObjectView: View {
 }
 
 struct FavoriteView: View {
-    
     @StateObject var viewModel: StateObjectViewModel
-    
+
     var body: some View {
         List(viewModel.heroName, id: \.self) { hero in
             Text(hero)

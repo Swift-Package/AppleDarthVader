@@ -10,11 +10,10 @@
 import SwiftUI
 
 struct ForLoopTipsView: View {
-    
     let strings = ["Apple", "", "Vader"]
     let optStrings = ["Darth", nil, "Apple"]
     let values: [Any] = ["A", 42, "B", 3.14, "C"]
-    
+
     var body: some View {
         VStack {
             Text("Hello Apple")

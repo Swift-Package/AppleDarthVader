@@ -18,7 +18,7 @@ public extension View {
             self
         }
     }
-    
+
     @ViewBuilder
     func applyIfLet<Value, Content: View>(_ value: Value?, transform: (Self, Value) -> Content) -> some View {
         if let value {

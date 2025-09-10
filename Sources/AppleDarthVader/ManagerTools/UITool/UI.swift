@@ -7,8 +7,8 @@
 
 import UIKit
 
-@objcMembers
 /// 用来判断设备及用户界面特征
+@objcMembers
 public class UI: NSObject {
     public static let shared = UI()
 

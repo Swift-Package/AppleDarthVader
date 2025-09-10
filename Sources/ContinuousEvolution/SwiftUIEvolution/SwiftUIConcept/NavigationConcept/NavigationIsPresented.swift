@@ -8,10 +8,10 @@
 import SwiftUI
 
 // MARK: - 4状态触发跳转
+
 struct NavigationIsPresented: View {
-    
     @State private var isPresented = false
-    
+
     var body: some View {
         NavigationStack {
             VStack {

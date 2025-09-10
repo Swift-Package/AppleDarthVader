@@ -9,14 +9,23 @@ let package = Package(
     platforms: [.iOS(.v18), .macOS(.v15), .watchOS(.v11), .tvOS(.v18), .visionOS(.v2)],
     products: [
         // MARK: - 纯 Swift 库
+
         .library(name: "AppleDarthVader", targets: ["AppleDarthVader"]),
+
         // MARK: - 纯 Objective-C 库
+
         .library(name: "AppleDarthVaderOC", targets: ["AppleDarthVaderOC"]),
+
         // MARK: - 纯 C 库
+
         .library(name: "PureCLibrary", targets: ["PureCLibrary"]),
+
         // MARK: - WWDC 演示代码汇总不对外提供扩展
+
         .library(name: "WWDCEsoterica", targets: ["WWDCEsoterica"]),
+
         // MARK: - 持续进化学习笔记不对外提供扩展
+
         .library(name: "ContinuousEvolution", targets: ["ContinuousEvolution"]),
     ],
     dependencies: [
@@ -29,51 +38,50 @@ let package = Package(
 //        .package(url: "https://github.com/pointfreeco/swift-navigation", branch: "main"),
 //        .package(url: "https://github.com/SVProgressHUD/SVProgressHUD", branch: "master"),
 //        .package(url: "https://github.com/hackiftekhar/IQKeyboardManager", branch: "master"),
-        .package(url: "https://github.com/nicklockwood/SwiftFormat", branch: "main"),// 代码格式化工具 - 在AppleDarthVader上下文菜单中使用SwiftFormatPlugin
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", branch: "main"), // 代码格式化工具 - 在AppleDarthVader上下文菜单中使用SwiftFormatPlugin
     ],
     targets: [
         // MARK: - 纯 Swift 目标 - 依赖纯 Objective-C 目标以复用 Objective-C 代码
+
         .target(name: "AppleDarthVader",
                 dependencies: ["Then",
                                "RxSwift",
                                .target(name: "AppleDarthVaderOC"),
-                               .product(name: "RxCocoa", package: "RxSwift"),
-                              ],
-                exclude: [],// 需要排除的文件
+                               .product(name: "RxCocoa", package: "RxSwift")],
+                exclude: [], // 需要排除的文件
                 resources: [
-                    .copy("FoundationDevelop/Bundle/Projects.json")
+                    .copy("FoundationDevelop/Bundle/Projects.json"),
                 ],
                 swiftSettings: [.unsafeFlags([
-                                    "-Xfrontend",
-                                    "-warn-long-function-bodies=1000",
-                                    "-Xfrontend",
-                                    "-warn-long-expression-type-checking=1000"
-                                ]),
-                                .swiftLanguageMode(.v5),
-                                //.treatAllWarnings(as: .error)
-                                //.treatWarning("StrictMemorySafety", as: .error),
-                                //.treatWarning("DeprecatedDeclaration", as: .warning),
-                                // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
-                                .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
-                                .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release)),
-                               ]
+                    "-Xfrontend",
+                    "-warn-long-function-bodies=1000",
+                    "-Xfrontend",
+                    "-warn-long-expression-type-checking=1000",
+                ]),
+                .swiftLanguageMode(.v5),
+                // .treatAllWarnings(as: .error)
+                // .treatWarning("StrictMemorySafety", as: .error),
+                // .treatWarning("DeprecatedDeclaration", as: .warning),
+                // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
+                .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
+                .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release))]
                 // linkerSettings: [.linkedFramework("CFNetwork", .when(platforms: [.iOS], configuration: nil))]
-               ),
+        ),
         .target(name: "AppleDarthVaderOC",
                 dependencies: [],
                 path: "Sources/AppleDarthVaderOC",
                 exclude: [],
                 resources: [],
-                publicHeadersPath: ".",// 公共头文件的路径设置为当前目录
+                publicHeadersPath: ".", // 公共头文件的路径设置为当前目录
                 cSettings: []),
-                // cSettings: [.unsafeFlags(["-w"])]),// 压制所有编译警告
+        // cSettings: [.unsafeFlags(["-w"])]),// 压制所有编译警告
         .target(name: "PureCLibrary",
                 dependencies: [],
                 path: "Sources/PureCLibrary",
                 exclude: [],
                 resources: [],
                 cSettings: [
-                    .define("SHOW_DEBUG_INFO", to: "1")
+                    .define("SHOW_DEBUG_INFO", to: "1"),
                 ]),
         .target(name: "WWDCEsoterica"),
         .target(name: "ContinuousEvolution",
@@ -81,36 +89,38 @@ let package = Package(
                 exclude: [],
                 resources: [],
                 swiftSettings: [.unsafeFlags([
-                                    "-Xfrontend",
-                                    "-warn-long-function-bodies=1000",
-                                    "-Xfrontend",
-                                    "-warn-long-expression-type-checking=1000"
-                                ]),
-                                .swiftLanguageMode(.v5),
-                                // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
-                                .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
-                                .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release)),
-                               ]
-               ),
+                    "-Xfrontend",
+                    "-warn-long-function-bodies=1000",
+                    "-Xfrontend",
+                    "-warn-long-expression-type-checking=1000",
+                ]),
+                .swiftLanguageMode(.v5),
+                // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
+                .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
+                .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release))]),
+
         // MARK: - 纯 Swift 测试目标用来测试两个库(逐步迁移到 Swift Testing 框架)
+
         .testTarget(name: "AppleDarthVaderTests",
                     dependencies: ["AppleDarthVader",
-                                   "AppleDarthVaderOC",
-                                  ],
+                                   "AppleDarthVaderOC"],
                     exclude: [],
                     resources: [.copy("Resources/DarthVader.png"),
-                                .copy("FoundationDevelop/Bundle/WeatherbitExample.json"),],
+                                .copy("FoundationDevelop/Bundle/WeatherbitExample.json")],
                     swiftSettings: [.swiftLanguageMode(.v5)]),
+
         // MARK: - 纯 Objective-C 测试目标用来测试两个库
+
         .testTarget(name: "AppleDarthVaderOCTests",
                     dependencies: ["AppleDarthVader",
-                                   "AppleDarthVaderOC"
-                                  ],
+                                   "AppleDarthVaderOC"],
                     exclude: [],
                     resources: [],
                     cSettings: []),
         .testTarget(name: "CombineLearnTests", dependencies: []),
+
         // MARK: - 纯 Swift 测试纯 C 库
+
         .testTarget(name: "PureCLibraryTests",
                     dependencies: ["PureCLibrary"],
                     exclude: [],
@@ -119,32 +129,34 @@ let package = Package(
     ],
     swiftLanguageModes: [.v6, .v5]
 )
-//public final class TouchUISwitchRequest: Request {
-//    
+// public final class TouchUISwitchRequest: Request {
+//
 //    public private(set) var touchOn: Bool
-//    
+//
 //    public init(_ touchOn: Bool) {
 //        self.touchOn = touchOn
 //        super.init(Command.COMMAND_TOUCH_UI)
 //    }
-//    
+//
 //    public override func getPayload() -> Data {
 //        let value: UInt8 = touchOn ? 0x01 : 0x00
 //        return Data([value])
 //    }
-//}
+// }
 
-//extension Command {
+// extension Command {
 //    // 新增
 //    public static let COMMAND_TOUCH_UI: UInt8           = 0x33 // TouchUI
-//}
+// }
+
 // MARK: - https://www.youtube.com/watch?v=k90TKBVjo9c
+
 //// MARK: - 开放封闭原则
-//struct OpenAnalyticEvent {
+// struct OpenAnalyticEvent {
 //    let name: String
-//    
+//
 //    static let viewLoaded: Self = .init(name: "viewLoaded")
-//}
-//extension OpenAnalyticEvent {
+// }
+// extension OpenAnalyticEvent {
 //    static let btnTap = OpenAnalyticEvent(name: "btnTap")
-//}
+// }

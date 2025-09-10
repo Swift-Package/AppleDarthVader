@@ -11,18 +11,19 @@ public extension AVCapturePhoto {
     func stupidOSChangePreviewCGImageRepresentation() -> CGImage? {
         return previewCGImageRepresentation()
     }
-    
+
     // MARK: - WWDC25 - Xcode 新功能
+
     var isCameraAuthorized: Bool {
         get async {
             let status = AVCaptureDevice.authorizationStatus(for: .video)
-            
+
             var isAuthorized = status == .authorized
-            
+
             if status == .notDetermined {
                 isAuthorized = await AVCaptureDevice.requestAccess(for: .video)
             }
-            
+
             return isAuthorized
         }
     }

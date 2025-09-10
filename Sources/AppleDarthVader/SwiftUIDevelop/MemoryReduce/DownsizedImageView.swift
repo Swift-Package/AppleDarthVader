@@ -19,20 +19,20 @@ public extension CGSize {
 }
 
 // MARK: - 降低内存使用的图片视图
+
 public struct DownsizedImageView<Content: View>: View {
-    
     public init(image: UIImage?, size: CGSize, @ViewBuilder content: @escaping (Image) -> Content) {
         self.image = image
         self.size = size
         self.content = content
     }
-    
+
     var image: UIImage?
     var size: CGSize
-    
+
     @ViewBuilder var content: (Image) -> Content
     @State private var downsizedImageView: Image?
-    
+
     public var body: some View {
         ZStack {
             if let downsizedImageView {
@@ -50,16 +50,16 @@ public struct DownsizedImageView<Content: View>: View {
             guard oldValue != newValue else { return }
         }
     }
-    
+
     private func createDownsizedImage(_ image: UIImage?) {
         guard let image else { return }
         let aspectSize = image.size.aspectFit(size)
         Task.detached(priority: .high) {
             let renderer = UIGraphicsImageRenderer(size: aspectSize)
-            let resizedImage = renderer.image { context in
+            let resizedImage = renderer.image { _ in
                 image.draw(in: .init(origin: .zero, size: aspectSize))
             }
-            
+
             await MainActor.run {
                 downsizedImageView = .init(uiImage: resizedImage)
             }
@@ -72,7 +72,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 VStack {
-                    ForEach(1...300, id: \.self) { _ in
+                    ForEach(1 ... 300, id: \.self) { _ in
                         if let image = UIImage(named: "奥德赛8K", in: Bundle.module, with: nil) {
                             Image(uiImage: image)
                                 .resizable()

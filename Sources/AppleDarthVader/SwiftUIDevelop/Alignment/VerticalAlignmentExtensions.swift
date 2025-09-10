@@ -15,7 +15,7 @@ public extension VerticalAlignment {
             context[.bottom]
         }
     }
-    
+
     static let midStarAndTitle = VerticalAlignment(MidStarAndTitle.self)
 }
 
@@ -30,7 +30,7 @@ struct VerticalAlignmentExtensionsView: View {
                         }
                     Text("5 Stars")
                 }.font(.caption)
-                
+
                 VStack(alignment: .leading) {
                     HStack {
                         Text("Avocado Toast")
@@ -53,6 +53,7 @@ struct VerticalAlignmentExtensionsView: View {
 }
 
 // MARK: - 现在这个MidStarAndTitle扩展好像已经没有用了SwiftUI可能已经修改了元素对齐的行为了 - 2025年8月17日于深圳固戍实验
+
 struct VerticalAlignmentExtensionsView1: View {
     var body: some View {
         List {
@@ -61,7 +62,7 @@ struct VerticalAlignmentExtensionsView1: View {
                     Text("⭐️⭐️⭐️⭐️⭐️")
                     Text("5 Stars")
                 }.font(.caption)
-                
+
                 VStack(alignment: .leading) {
                     HStack {
                         Text("Avocado Toast")

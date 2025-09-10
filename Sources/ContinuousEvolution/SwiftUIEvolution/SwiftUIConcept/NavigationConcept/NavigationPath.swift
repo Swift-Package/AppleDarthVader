@@ -8,10 +8,10 @@
 import SwiftUI
 
 // MARK: - 3多层级跳转并传递数据
+
 struct NavigationPath: View {
-    
     @State private var path: [String] = []
-    
+
     var body: some View {
         NavigationStack(path: $path) {
             VStack {
@@ -35,7 +35,6 @@ struct NavigationPath: View {
                                     Text("返回")
                                 }
                             }
-
                         }
                     }
             }
