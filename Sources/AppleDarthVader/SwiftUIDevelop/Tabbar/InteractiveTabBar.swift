@@ -14,7 +14,7 @@ public enum TabItem: String, CaseIterable {
     case search = "Search"
     case notifications = "Notifications"
     case settings = "Settings"
-
+    
     var symbolImage: String {
         switch self {
         case .home:
@@ -27,24 +27,25 @@ public enum TabItem: String, CaseIterable {
             "gearshape"
         }
     }
-
+    
     var index: Int {
         Self.allCases.firstIndex(of: self) ?? 0
     }
 }
 
 public struct InteractiveTabBar: View {
+    
     public init(activeTab: TabItem = .home) {
         self.activeTab = activeTab
     }
-
+    
     @State private var activeTab: TabItem = .home
-
+    
     public var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $activeTab) {
                 ForEach(TabItem.allCases, id: \.rawValue) { tab in
-                    Tab(value: tab) {
+                    Tab.init(value: tab) {
                         Text(tab.rawValue)
                             .toolbar(.hidden, for: .tabBar)
                     }
@@ -56,14 +57,15 @@ public struct InteractiveTabBar: View {
 }
 
 public struct InteractiveTabbar: View {
+    
     @Binding var activeTab: TabItem
-
+    
     @Namespace private var animation
-
+    
     @State private var tabButtonLocation: [CGRect] = Array(repeating: .zero, count: TabItem.allCases.count)
-
+    
     @State private var activeDraggingTab: TabItem?
-
+    
     public var body: some View {
         HStack(spacing: 0) {
             ForEach(TabItem.allCases, id: \.rawValue) { tab in
@@ -79,11 +81,11 @@ public struct InteractiveTabbar: View {
         .padding(.horizontal, 15)
         .padding(.bottom, 10)
     }
-
+    
     @ViewBuilder
     func TabButton(_ tab: TabItem) -> some View {
         let isActive = (activeDraggingTab ?? activeTab) == tab
-
+        
         VStack(spacing: 6) {
             Image(systemName: tab.symbolImage)
                 .symbolVariant(.fill)
@@ -116,7 +118,7 @@ public struct InteractiveTabbar: View {
         }
         .gesture(
             DragGesture(coordinateSpace: .named("TABBAR"))
-                .onChanged { value in
+                .onChanged{ value in
                     // 检查是否落在最近的选项上 如果是切换过去
                     let location = value.location
                     if let index = tabButtonLocation.firstIndex(where: { rect in
@@ -127,7 +129,7 @@ public struct InteractiveTabbar: View {
                         }
                     }
                 }
-                .onEnded { _ in
+                .onEnded{ _ in
                     if let activeDraggingTab {
                         activeTab = activeDraggingTab
                     }

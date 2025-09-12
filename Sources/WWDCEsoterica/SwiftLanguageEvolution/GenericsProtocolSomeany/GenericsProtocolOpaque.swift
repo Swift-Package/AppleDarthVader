@@ -6,7 +6,6 @@
 //
 
 // MARK: - 教程来源
-
 // WWDC22 - 采用Swift泛型
 // WWDC22 - 使用Swift设计协议接口
 // WWDC20 - 在Swift中设计协议接口 Design protocol interface in Swift
@@ -17,41 +16,36 @@ import Foundation
 // MARK: - ⚠️where是为了双向绑定两个符合协议的具体类型相互关联 为了防止出现干草收获到小米的错误
 
 // MARK: - 庄稼协议
-
-private protocol Crop {
+fileprivate protocol Crop {
     associatedtype FeedType: AnimalFeed where FeedType.CropType == Self // 庄稼可以收获产生动物饲料 而动物饲料又来源于庄稼
-
+    
     /// 庄稼可以收获产生动物饲料
     func harvest() -> FeedType
 }
 
 // MARK: - 动物饲料协议
-
-private protocol AnimalFeed {
+fileprivate protocol AnimalFeed {
     associatedtype CropType: Crop where CropType.FeedType == Self // 动物饲料静态方法可以生成庄稼 而庄稼可以收获产生动物饲料
-
+    
     /// 动物饲料静态方法可以生成庄稼
     static func grow() -> CropType
 }
 
 // MARK: - 干草
-
-private struct Hay: AnimalFeed {
+fileprivate struct Hay: AnimalFeed {
     static func grow() -> Alfalfa {
         Alfalfa()
     }
 }
 
 // MARK: - 苜蓿
-
-private struct Alfalfa: Crop {
+fileprivate struct Alfalfa: Crop {
     func harvest() -> Hay {
         Hay()
     }
 }
 
 // MARK: - 鸡饲料
-
 struct Scratch: AnimalFeed {
     static func grow() -> Millet {
         Millet()
@@ -59,101 +53,106 @@ struct Scratch: AnimalFeed {
 }
 
 // MARK: - 小米庄稼
-
 struct Millet: Crop {
     func harvest() -> Scratch {
         Scratch()
     }
 }
 
-private protocol Animal {
+
+fileprivate protocol Animal {
     associatedtype FeedType: AnimalFeed // 动物吃不同的饲料
-    associatedtype CommodityType: Food // 动物提供给人类不同的食物
-
+    associatedtype CommodityType: Food  // 动物提供给人类不同的食物
+    
     var isHungry: Bool { get }
-
+    
     func eat(_ food: FeedType)
-
+    
     func produce() -> CommodityType
 }
 
-private struct Cow: Animal {
+fileprivate struct Cow: Animal {
+    
     var isHungry: Bool { true }
-
-    func eat(_: Hay) {}
-
+    
+    func eat(_ food: Hay) {}
+    
     func produce() -> Milk {
         Milk()
     }
 }
-
 struct Chicken: Animal {
+    
     var isHungry: Bool { true }
-
-    func eat(_: Scratch) {}
-
+    
+    func eat(_ food: Scratch) {
+        
+    }
+    
     func produce() -> Egg {
         Egg()
     }
 }
 
+
 // MARK: - 农场
-
-private struct Farm {
+fileprivate struct Farm {
+    
     var animals: [any Animal]
-
+    
     func feed(_ animal: some Animal) {
         let crop = type(of: animal).FeedType.grow()
         let produce = crop.harvest()
         animal.eat(produce)
     }
-
+    
     func feedAll(_ animals: [any Animal]) {
         for animal in animals {
             feed(animal)
         }
     }
-
+    
     func produceCommodities() -> [any Food] {
         animals.map { animal in
             animal.produce()
         }
     }
-
+    
     // func buildHome<A>(for animal: A) -> A.Habitat where A: Animal { }
 }
 
 extension Farm {
+    
     var isLazy: Bool {
         Bool.random()
     }
-
-    var hungryAnimals: LazyFilterSequence<[any Animal]> { // 1这种方法会暴露实现细节
+    
+    var hungryAnimals: LazyFilterSequence<[any Animal]> {// 1这种方法会暴露实现细节
         animals.lazy.filter(\.isHungry)
     }
-
-    var someHungryAnimals: some Collection { // 2这种方法不会暴露实现细节但是隐藏太多了
+    
+    var someHungryAnimals: some Collection {// 2这种方法不会暴露实现细节但是隐藏太多了
         animals.lazy.filter(\.isHungry)
     }
-
-    var anyHungryAnimals: some Collection<any Animal> { // 3这种方法恰到好处
+    
+    var anyHungryAnimals: some Collection<any Animal> {// 3这种方法恰到好处
         animals.lazy.filter(\.isHungry)
     }
-
-    var optionalLazyAnyHungryAnimals: any Collection<any Animal> { // 4还有这种方法
+    
+    var optionalLazyAnyHungryAnimals: any Collection<any Animal> {// 4还有这种方法
         if isLazy {
             animals.lazy.filter(\.isHungry)
         } else {
             animals.filter(\.isHungry)
         }
     }
-
+    
     func feedAnimals() {
-        for animal in anyHungryAnimals { // 因为hungryAnimals迭代一次完就丢弃了所以使用lazy避免临时分配内存
+        for animal in anyHungryAnimals {// 因为hungryAnimals迭代一次完就丢弃了所以使用lazy避免临时分配内存
             feedAnimal(animal)
         }
     }
-
+    
     private func feedAnimal(_ animal: some Animal) {
         let crop = type(of: animal).FeedType.grow()
         let feed = crop.harvest()
@@ -161,20 +160,28 @@ extension Farm {
     }
 }
 
-private protocol Food {}
+fileprivate protocol Food {
+    
+}
 
-struct Milk: Food {}
+struct Milk: Food {
+    
+}
 
-struct Egg: Food {}
+struct Egg: Food {
+    
+}
 
 func test() {
     let cow = Cow()
     let alfalfa = Hay.grow()
     let hay = alfalfa.harvest()
     cow.eat(hay)
-
+    
     let chicken = Chicken()
     let millet = Scratch.grow()
     let scratch = millet.harvest()
     chicken.eat(scratch)
 }
+
+

@@ -5,8 +5,8 @@
 //  Created by 杨俊艺 on 2025/9/7.
 //
 
-import Combine
 import Testing
+import Combine
 
 struct AsyncAwait {
     @Test func asyncAwait() {

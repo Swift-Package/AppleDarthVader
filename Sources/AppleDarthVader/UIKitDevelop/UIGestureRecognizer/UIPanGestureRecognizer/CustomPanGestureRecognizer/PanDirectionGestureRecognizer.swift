@@ -63,7 +63,6 @@ class PanDirectionGestureRecognizer: UIPanGestureRecognizer {
 }
 
 // MARK: - 扩展Block
-
 typealias GestureRecognizerHandle = (_ recognizer: UIGestureRecognizer) -> Void
 
 class GesHandleWrapper: NSObject {

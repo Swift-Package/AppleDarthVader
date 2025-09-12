@@ -21,10 +21,9 @@ public extension MainActor {
             }
         }
     }
-
+    
     // MARK: - 这个方法 MainActor.run Apple 已经有了
-
-    static func run<T>(resultType _: T.Type = T.self, block: @MainActor @Sendable () throws -> T) async rethrows -> T {
+    static func run<T>(resultType: T.Type = T.self, block: @MainActor @Sendable () throws -> T) async rethrows -> T {
         do {
             return try await block()
         } catch {

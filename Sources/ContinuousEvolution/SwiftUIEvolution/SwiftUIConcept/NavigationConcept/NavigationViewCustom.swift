@@ -8,11 +8,10 @@
 import SwiftUI
 
 // MARK: - 2自定义跳转按钮并传递数据
-
 struct NavigationViewCustom: View {
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack  {
                 NavigationLink(value: 2) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -22,7 +21,7 @@ struct NavigationViewCustom: View {
                             .foregroundStyle(.white)
                     }
                 }
-
+                
                 NavigationLink(value: "2") {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -33,9 +32,7 @@ struct NavigationViewCustom: View {
                     }
                 }
             }
-
             // MARK: - 多种类型数据传递
-
             .navigationDestination(for: Int.self) { value in
                 Text("传递过来的整数值 \(value)")
             }

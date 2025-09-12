@@ -12,28 +12,28 @@ import SwiftUI
 struct ViewExtractView: View {
     var body: some View {
         TabView {
-            Tab("Home", systemImage: "heart.fill") {
+            Tab.init("Home", systemImage: "heart.fill") {
                 VStack {
                     Image(systemName: "globe")
                         .imageScale(.large)
                         .foregroundStyle(.tint)
                     Text("Hello, world!")
-                        .viewExtract { _ in
+                        .viewExtract { view in
                             print("这种View是SwiftUI原生的View不包含任何UIKit View") // 该行代码不会执行
                         }
-
+                    
                     Slider(value: .constant(2))
                         .viewExtract { view in
                             if let slider = view as? UISlider {
                                 slider.tintColor = .red
                             }
                         }
-
+                    
                     TextField("Hello World", text: .constant(""))
                         .viewExtract { _ in
                             print("TextField 以及 Slider是使用SwiftUI包装器包装UIKit的")
                         }
-
+                    
                     List {
                         Text("Hello World")
                     }

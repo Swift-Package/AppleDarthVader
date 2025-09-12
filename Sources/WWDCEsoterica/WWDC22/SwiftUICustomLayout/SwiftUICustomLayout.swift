@@ -11,7 +11,7 @@ struct Pet: Identifiable, Equatable {
     let type: String
     var votes: Int = 0
     var id: String { type }
-
+    
     nonisolated(unsafe) static var exampleData: [Pet] = [
         Pet(type: "Cat", votes: 25),
         Pet(type: "Goldfish", votes: 9),
@@ -20,10 +20,11 @@ struct Pet: Identifiable, Equatable {
 }
 
 struct SwiftUICustomLayout: View {
+    
     let totalVotes = 50
-
+    
     @State private var pets = Pet.exampleData
-
+    
     var body: some View {
         Grid(alignment: .leading) {
             ForEach(pets) { pet in
@@ -35,10 +36,10 @@ struct SwiftUICustomLayout: View {
                 }
                 // Divider() // 可以用这一行替换下面的3行代码
                 GridRow {
-                    Divider().gridCellColumns(3) // 跨越多列的分割线
+                    Divider().gridCellColumns(3)// 跨越多列的分割线
                 }
             }
-
+            
             HStack {
                 Text("Delicious").font(.caption)
                 Image("20x20_avocado").alignmentGuide(.lastTextBaseline) { dimensions in

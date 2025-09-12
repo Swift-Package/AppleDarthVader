@@ -10,14 +10,15 @@
 import SwiftUI
 
 struct SystemEnvironment: View {
+    
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.openURL) var openURL
-
+    
     @State var backgroundTime: Date?
-
+    
     var body: some View {
         VStack {
             Button {
@@ -30,7 +31,9 @@ struct SystemEnvironment: View {
                     if let backgroundTime {
                         Text("应用切换到后的时间 \(backgroundTime, style: .time)")
                     }
-                } else {}
+                } else {
+                    
+                }
             }
         }
         .onChange(of: scenePhase) { _, newScenePhase in
