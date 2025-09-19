@@ -33,6 +33,7 @@ enum LayoutType: Int, CaseIterable {
     case hStack
     case vStack
     case zStack
+    case altStack
     
     var index: Int {
         LayoutType.allCases.firstIndex(where: { $0 == self })!
@@ -46,13 +47,15 @@ enum LayoutType: Int, CaseIterable {
             return VStackLayout(alignment: .trailing)
         case .zStack:
             return ZStackLayout(alignment: .center)
+        case .altStack:
+            return AlternateStackLayout()
         }
     }
 }
 
 struct AnyLayoutView: View {
     
-    @State private var layoutType = LayoutType.zStack
+    @State private var layoutType = LayoutType.hStack
     
     var body: some View {
         let layout = AnyLayout(layoutType.layout)
@@ -78,7 +81,6 @@ struct AnyLayoutView: View {
                     } label: {
                         Image(systemName: "circle.grid.3x3.circle.fill")
                     }
-
                 }
             }
         }
