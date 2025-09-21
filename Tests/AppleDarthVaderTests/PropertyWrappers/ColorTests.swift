@@ -9,12 +9,14 @@
 import Testing
 import UIKit
 
+@MainActor
 private enum Colors {
     @ColorWrapper(dark: .black, light: .red)
     static var mainRed
 }
 
 struct ColorTests {
+    @MainActor
     @Test func test() {
         #expect(Colors.mainRed == UIColor.red)
 

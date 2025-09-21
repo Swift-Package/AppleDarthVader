@@ -7,14 +7,20 @@
 
 import MetricKit
 
+@MainActor
 public class MetricKitManager: NSObject {
+    
     public static let shared = MetricKitManager()
 
     override private init() {
         super.init()
     }
 
-    deinit { MXMetricManager.shared.remove(self) }
+    deinit {
+        MainActor.assumeIsolated {
+            MXMetricManager.shared.remove(self)
+        }
+    }
 
     /// 启动MetricKit性能监控
     public func startMonitor() {
@@ -25,7 +31,8 @@ public class MetricKitManager: NSObject {
     }
 }
 
-extension MetricKitManager: MXMetricManagerSubscriber {
+@MainActor
+extension MetricKitManager: @MainActor MXMetricManagerSubscriber {
     public func didReceive(_ payloads: [MXMetricPayload]) {
         guard let firstPayload = payloads.first else { return }
         print("AppleDarthVader \(firstPayload.dictionaryRepresentation())")

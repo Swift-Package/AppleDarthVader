@@ -12,12 +12,14 @@ public enum DownloadError: Error {
     case invalidImage
 }
 
+@MainActor
 public class ImageDownloader {
+    
     public static let shared = ImageDownloader()
 
     private init() {}
 
-    public func downloadImage(from url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    public func downloadImage(from url: URL, completion: @escaping @Sendable (Result<UIImage, Error>) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error {
                 completion(.failure(error))

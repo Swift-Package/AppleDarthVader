@@ -7,8 +7,10 @@
 
 import UIKit
 
+@MainActor
 @objcMembers
 public class UIViewControllerManager: NSObject {
+    
     public static let shared = UIViewControllerManager()
 
     /// 获取根视图控制器

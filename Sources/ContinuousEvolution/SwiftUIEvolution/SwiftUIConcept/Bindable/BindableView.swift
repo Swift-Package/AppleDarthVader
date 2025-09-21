@@ -71,3 +71,8 @@ struct BindableSearchView: View {
         SearchField(query: $viewModel.query)
     }
 }
+
+// MARK: - 关于 Bindable 学习顺序
+// 1.ConvenienceBindableView
+// 2.BindableView
+// 3.EnvironmentObjectView

@@ -14,18 +14,17 @@ public extension EnvironmentValues {
 }
 
 // MARK: - 代替下面复杂的写法
-
-private struct CustomColorEnvironmentKey: EnvironmentKey {
-    static var defaultValue: Color = .white
-}
-
-private extension EnvironmentValues {
-    var customColorX: Color {
-        get {
-            self[CustomColorEnvironmentKey.self]
-        }
-        set {
-            self[CustomColorEnvironmentKey.self] = newValue
-        }
-    }
-}
+//private struct CustomColorEnvironmentKey: @MainActor EnvironmentKey {
+//    static var defaultValue: Color = .white
+//}
+//
+//private extension EnvironmentValues {
+//    var customColorX: Color {
+//        get {
+//            self[CustomColorEnvironmentKey.self]
+//        }
+//        set {
+//            self[CustomColorEnvironmentKey.self] = newValue
+//        }
+//    }
+//}

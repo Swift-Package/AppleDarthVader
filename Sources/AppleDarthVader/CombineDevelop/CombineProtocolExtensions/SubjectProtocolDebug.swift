@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 
+@MainActor
 public extension Subject where Output == String {
     /// 向主题填充要发布的数据方便调试
     /// - Parameter data: 一个[(TimeInterval, String)]  TimeInterval指定要发布的时间点  String指定要发布的值
@@ -27,7 +28,7 @@ public extension Subject where Output == String {
 }
 
 // MARK: - 更高抽象度的扩展
-
+@MainActor
 public extension Subject {
     /// 向主题填充要发布的数据方便调试
     /// - Parameter data: 一个[(TimeInterval, Output)]  TimeInterval指定要发布的时间点  Output指定要发布的值

@@ -13,7 +13,7 @@ final class NetworkMonitorTests: XCTestCase {
         NotificationCenter.default.addObserver(self, selector: #selector(showOfflineDeviceUI(notification:)), name: NSNotification.Name.connectivityStatus, object: nil)
     }
 
-    @objc func showOfflineDeviceUI(notification _: Notification) {
+    @MainActor @objc func showOfflineDeviceUI(notification _: Notification) {
         if NetworkMonitor.shared.isConnected {
             print("Skywalker Network Connected")
         } else {

@@ -39,7 +39,7 @@ public extension UIImage {
         return newImage!
     }
 
-    func resizedToMatchScreenWidth() -> UIImage? {
+    @MainActor func resizedToMatchScreenWidth() -> UIImage? {
         let screenWidth = UIScreen.main.bounds.width
         let widthScale = screenWidth / size.width
         let newHeight = size.height * widthScale

@@ -12,6 +12,7 @@ import RxSwift
 import UIKit
 
 /// UICollectionView仿微信朋友圈首页背景推动视差效果
+@MainActor
 extension Reactive where Base: UICollectionView {
     func scrollToIndexPath(animated: Bool = true) -> Binder<IndexPath> {
         return Binder(base) { base, indexPath in

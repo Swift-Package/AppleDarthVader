@@ -7,10 +7,12 @@
 
 import UIKit
 
-@objcMembers
 /// 用来判断设备及用户界面特征
+@MainActor
+@objcMembers
 public class UI: NSObject {
-    public static let shared = UI()
+    
+     public static let shared = UI()
 
     public var isPortrait: Bool {
         UIApplication.shared.connectedScenes

@@ -7,9 +7,11 @@
 
 import UIKit
 
+@MainActor
 extension UIResponder {
+    
     private enum Static {
-        weak static var responder: UIResponder?
+        @MainActor weak static var responder: UIResponder?
     }
 
     /// 获取应用程序当前第一响应者

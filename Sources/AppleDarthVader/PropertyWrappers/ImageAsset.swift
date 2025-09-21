@@ -9,6 +9,7 @@
 
 import UIKit
 
+@MainActor
 @propertyWrapper
 public struct ImageAsset {
     private let key: String

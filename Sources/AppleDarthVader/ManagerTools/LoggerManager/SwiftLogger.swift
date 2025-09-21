@@ -33,6 +33,7 @@ enum Log {
 
 // MARK: - 日志记录工具类
 
+@MainActor
 @objcMembers
 public final class SwiftLogger: NSObject {
     public static let shared = SwiftLogger()
@@ -114,9 +115,10 @@ public final class SwiftLogger: NSObject {
 }
 
 // MARK: - 路标事件跟踪工具类
-
+@MainActor
 @objcMembers
 public final class SwiftSignposter: NSObject {
+    
     public static let shared = SwiftSignposter()
 
     private let timeFormatter = DateFormatter().then { make in

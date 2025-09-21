@@ -11,7 +11,7 @@
 import Foundation
 
 public extension MainActor {
-    static func runSafely<T>(_ block: @MainActor () -> T) throws -> T {
+    static func runSafely<T: Sendable>(_ block: @MainActor () -> T) throws -> T {
         if Thread.isMainThread {
             return MainActor.assumeIsolated { block() }
         } else {
@@ -23,7 +23,7 @@ public extension MainActor {
     }
     
     // MARK: - 这个方法 MainActor.run Apple 已经有了
-    static func run<T>(resultType: T.Type = T.self, block: @MainActor @Sendable () throws -> T) async rethrows -> T {
+    static func runSafely<T: Sendable>(resultType: T.Type = T.self, block: @MainActor @Sendable () throws -> T) async rethrows -> T {
         do {
             return try await block()
         } catch {

@@ -7,10 +7,10 @@
 
 import Foundation
 
-public extension Array {
+public extension Array where Element: Sendable {
     /// 并行迭代数组中的各个元素
     /// - Parameter body: 迭代操作
-    func parallelForEach(_ body: (Element) -> Void) {
+    func parallelForEach(_ body: @Sendable (Element) -> Void) {
         DispatchQueue.concurrentPerform(iterations: count) { index in
             body(self[index])
         }

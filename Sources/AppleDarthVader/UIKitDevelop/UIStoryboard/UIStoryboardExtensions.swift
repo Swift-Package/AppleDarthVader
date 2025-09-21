@@ -17,10 +17,12 @@ public enum Storyboard {
     }
 }
 
+@MainActor
 public protocol StoryboardIdentifiable {
     static var storyboardIdentifier: String { get }
 }
 
+@MainActor
 extension UIViewController: StoryboardIdentifiable {
     public static var storyboardIdentifier: String { String(describing: self) }
 }
@@ -42,8 +44,10 @@ public extension UIStoryboard {
     }
 }
 
+@MainActor
 protocol UIViewControllerCreatable {}
 
+@MainActor
 extension UIViewControllerCreatable where Self: UIViewController {
     static func create(of storyboard: Storyboard) -> Self {
         return UIStoryboard(storyboard: storyboard).instantiateViewController()

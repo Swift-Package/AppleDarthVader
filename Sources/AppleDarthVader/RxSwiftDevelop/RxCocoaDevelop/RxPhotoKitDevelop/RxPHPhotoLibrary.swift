@@ -11,7 +11,7 @@ import Photos
 import RxSwift
 import UIKit
 
-extension PHPhotoLibrary {
+public extension PHPhotoLibrary {
     static var authorized: Observable<Bool> {
         return Observable.create { observer in
             if authorizationStatus() == .authorized {
@@ -30,7 +30,7 @@ extension PHPhotoLibrary {
 }
 
 public class PhotoWriter {
-    enum Errors: Error {
+    public enum Errors: Error {
         case couldNotSavePhoto
     }
 
@@ -51,5 +51,22 @@ public class PhotoWriter {
             })
             return Disposables.create()
         })
+    }
+
+    @MainActor
+    func savePhoto(_ image: UIImage) async throws -> String {
+        try await withCheckedThrowingContinuation { continuation in
+            var savedAssetId: String?
+            PHPhotoLibrary.shared().performChanges({
+                let request = PHAssetChangeRequest.creationRequestForAsset(from: image)
+                savedAssetId = request.placeholderForCreatedAsset?.localIdentifier
+            }, completionHandler: { success, error in
+                if success, let id = savedAssetId {
+                    continuation.resume(returning: id)
+                } else {
+                    continuation.resume(throwing: error ?? Errors.couldNotSavePhoto)
+                }
+            })
+        }
     }
 }

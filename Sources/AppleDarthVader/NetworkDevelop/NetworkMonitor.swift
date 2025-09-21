@@ -8,8 +8,9 @@
 import Foundation
 import Network
 
-extension NWInterface.InterfaceType: @retroactive CaseIterable {
-    public static var allCases: [NWInterface.InterfaceType] = [.other, .wifi, .cellular, .loopback, .wiredEthernet]
+@MainActor
+public extension NWInterface.InterfaceType {
+    static var allCases: [NWInterface.InterfaceType] = [.other, .wifi, .cellular, .loopback, .wiredEthernet]
 }
 
 public extension Notification.Name {
@@ -17,6 +18,7 @@ public extension Notification.Name {
 }
 
 /// 网络状态监听类 使用时在didFinishLaunchingWithOptions方法内NetworkMonitor.shared.startMonitoring()
+@MainActor
 @objc
 public final class NetworkMonitor: NSObject {
     public static let shared = NetworkMonitor()
@@ -40,12 +42,14 @@ public final class NetworkMonitor: NSObject {
 
     public func startMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in
-            self?.status = path.status
-            self?.isConnected = path.status != .unsatisfied
-            self?.isExpensive = path.isExpensive
-            self?.currentConnectionType = NWInterface.InterfaceType.allCases.filter { path.usesInterfaceType($0) }.first
-
-            NotificationCenter.default.post(name: .connectivityStatus, object: nil)
+            Task { @MainActor in
+                self?.status = path.status
+                self?.isConnected = path.status != .unsatisfied
+                self?.isExpensive = path.isExpensive
+                self?.currentConnectionType = NWInterface.InterfaceType.allCases.filter { path.usesInterfaceType($0) }.first
+                
+                NotificationCenter.default.post(name: .connectivityStatus, object: nil)
+            }
         }
         monitor.start(queue: queue)
     }

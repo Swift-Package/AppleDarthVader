@@ -9,11 +9,12 @@
 import Testing
 import UIKit
 
-private enum Asset {
+enum Asset {
     @ImageAsset(key: "DarthVader")
     public static var darthVaderIcon: UIImage
 }
 
+@MainActor
 struct ImageAssetTests {
     @Test("图片资源访问包装器测试") func test() {
         let image = UIImage(named: "DarthVader", in: Bundle.module, with: nil)

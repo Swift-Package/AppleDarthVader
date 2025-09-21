@@ -11,7 +11,8 @@ import Combine
 import UIKit
 
 /// A custom subscription to capture UIControl target events.
-public final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl>: Subscription where SubscriberType.Input == Control {
+@MainActor
+public final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl>: @MainActor Subscription where SubscriberType.Input == Control {
     private var subscriber: SubscriberType?
     private let control: Control
 
@@ -35,8 +36,9 @@ public final class UIControlSubscription<SubscriberType: Subscriber, Control: UI
     }
 }
 
-/// A custom `Publisher` to work with our custom `UIControlSubscription`.
-public struct UIControlPublisher<Control: UIControl>: Publisher {
+/// A custom `Publisher` to work with our custom `UIControlSubscription`
+@MainActor
+public struct UIControlPublisher<Control: UIControl>: @MainActor Publisher {
     public typealias Output = Control
     public typealias Failure = Never
 
@@ -58,7 +60,7 @@ public struct UIControlPublisher<Control: UIControl>: Publisher {
 public protocol CombineCompatible {}
 extension UIControl: CombineCompatible {}
 public extension CombineCompatible where Self: UIControl {
-    func publisher(for events: UIControl.Event) -> UIControlPublisher<UIControl> {
+    @MainActor func publisher(for events: UIControl.Event) -> UIControlPublisher<UIControl> {
         return UIControlPublisher(control: self, events: events)
     }
 }

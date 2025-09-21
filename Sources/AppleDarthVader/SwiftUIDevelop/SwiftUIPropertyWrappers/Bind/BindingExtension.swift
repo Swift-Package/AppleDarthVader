@@ -9,6 +9,7 @@
 
 import SwiftUI
 
+@MainActor
 public extension Binding {
     // 将一个 Binding<V?> 转换为 Binding<Bool>
     static func isPresented<V>(_ value: Binding<V?>) -> Binding<Bool> {

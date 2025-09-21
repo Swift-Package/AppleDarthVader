@@ -27,7 +27,7 @@ public struct AnyCodingKey: CodingKey {
 
 public extension JSONDecoder.KeyDecodingStrategy {
     /// 短横线规则例如JSON中store-link转换成storeLink
-    static var convertFromKebabCase: JSONDecoder.KeyDecodingStrategy = .custom { keys in
+    @MainActor static var convertFromKebabCase: JSONDecoder.KeyDecodingStrategy = .custom { keys in
         // 获取数组中的最后一个编码键
         // 编码键数组表示从JSON的根到您正在处理的特定键的整个路径因此在这种情况下您只对最后一个感兴趣
         let codingKey = keys.last!

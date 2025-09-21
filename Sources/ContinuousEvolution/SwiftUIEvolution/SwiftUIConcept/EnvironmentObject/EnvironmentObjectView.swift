@@ -8,7 +8,6 @@
 // How to Use @Environment & @EnvironmentObject in 2025 - https://www.youtube.com/watch?v=5enyOSqkL-w
 
 import SwiftUI
-import Observation
 
 @Observable
 class AppSettings {

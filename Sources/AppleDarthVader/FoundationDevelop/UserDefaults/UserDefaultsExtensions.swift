@@ -7,7 +7,9 @@
 
 import Foundation
 
+@MainActor
 enum UserDefaultsHelper {
+    
     private static let defaults = UserDefaults(suiteName: XCConfiguration.stringValue(forKey: "USER_DEFAULTS_SUITE_NAME")) ?? .standard
 
     // 分离各个环境的数据

@@ -8,6 +8,7 @@
 import Foundation
 import Network
 
+@MainActor
 public class NetworkMonitorForSwiftUI: ObservableObject {
     static let shared = NetworkMonitorForSwiftUI()
 
@@ -21,10 +22,12 @@ public class NetworkMonitorForSwiftUI: ObservableObject {
 
     public func start() {
         monitor.pathUpdateHandler = { path in
-            guard let interface = NWInterface.InterfaceType.allCases.filter({ interFaceType in path.usesInterfaceType(interFaceType) }).first else { return }
-
-            DispatchQueue.main.sync { [weak self] in
-                self?.currentInterface = interface
+            Task { @MainActor in
+                guard let interface = NWInterface.InterfaceType.allCases.filter({ interFaceType in path.usesInterfaceType(interFaceType) }).first else { return }
+                
+                DispatchQueue.main.sync { [weak self] in
+                    self?.currentInterface = interface
+                }
             }
         }
 

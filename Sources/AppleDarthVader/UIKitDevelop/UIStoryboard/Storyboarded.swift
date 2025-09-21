@@ -14,6 +14,7 @@ public protocol Storyboarded {
 }
 
 // 依赖于Storyboard中的控制器的ID也设置为类名
+@MainActor
 public extension Storyboarded where Self: UIViewController {
     static func instantiate() -> Self {
         return UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: String(describing: self)) as! Self
@@ -30,6 +31,7 @@ public protocol StoryboardInstantiable: NSObjectProtocol {
     static func instantiateViewController(_ bundle: Bundle?) -> UIViewControllerType
 }
 
+@MainActor
 public extension StoryboardInstantiable where Self: UIViewController {
     static var defaultFileName: String { NSStringFromClass(Self.self).components(separatedBy: ".").last! }
 

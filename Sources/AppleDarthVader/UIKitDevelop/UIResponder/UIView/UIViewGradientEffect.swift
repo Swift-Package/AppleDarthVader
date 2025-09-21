@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 public protocol GradientEffect {
     var gradientEffectEnabled: Bool { get set }
 }
