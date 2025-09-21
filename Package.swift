@@ -55,7 +55,6 @@ let package = Package(
                     //.treatAllWarnings(as: .error)
                     //.treatWarning("StrictMemorySafety", as: .error),
                     // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
-                    .treatWarning("DeprecatedDeclaration", as: .warning),
                     .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
                     .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release)),
                 ]
