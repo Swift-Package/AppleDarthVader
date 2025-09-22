@@ -54,5 +54,8 @@
 
 
 
-
-
+# 🌈 UIKitEvolution   关于 UIKit 特性进化
+### iOS26                           关于 iOS 26 新特性
+- ObservableLayoutSubviews(1)       可观察属性现在行为更像 SwiftUI
+- UpdateProperties(3)               UIView 和 UIViewController 更新的新API
+- ConfigurationUpdateHandler(2)       ConfigurationUpdateHandler
