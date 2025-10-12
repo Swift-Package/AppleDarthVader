@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: - 3多层级跳转并传递数据
-struct NavigationPath: View {
+fileprivate struct NavigationPath: View {
     
     @State private var path: [String] = []
     

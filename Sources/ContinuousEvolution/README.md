@@ -18,7 +18,7 @@
 # 🌈 SwiftUIEvolution   关于 Swift 概念进化
 ### Animations                      关于动画
 - Transition                        动画过渡效果
----- AnimateTransitionView           动画过渡效果以及完成事件
+---- AnimateTransitionView          动画过渡效果以及完成事件
 ### CustomLayout                    关于布局Layout
 - AnyLayout
 ---- AlternateLayoutView            交错布局
@@ -58,4 +58,30 @@
 ### iOS26                           关于 iOS 26 新特性
 - ObservableLayoutSubviews(1)       可观察属性现在行为更像 SwiftUI
 - UpdateProperties(3)               UIView 和 UIViewController 更新的新API
-- ConfigurationUpdateHandler(2)       ConfigurationUpdateHandler
+- ConfigurationUpdateHandler(2)     ConfigurationUpdateHandler
+
+
+
+# 🌈 非常优秀的博客以及视频教程
+Advanced Navigation for SwiftUI apps - https://www.youtube.com/watch?v=Z-3ETLYbhFA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
