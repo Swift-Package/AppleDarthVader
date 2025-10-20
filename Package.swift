@@ -89,7 +89,7 @@ let package = Package(
                 swiftSettings: [
                     .swiftLanguageMode(.v6),
                     .unsafeFlags([
-                        "-strict-concurrency=complete",
+                        // "-strict-concurrency=complete",
                         "-Xfrontend",
                         "-warn-long-function-bodies=1000",
                         "-Xfrontend",

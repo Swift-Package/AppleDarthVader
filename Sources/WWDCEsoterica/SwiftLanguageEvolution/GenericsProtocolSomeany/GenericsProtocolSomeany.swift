@@ -6,10 +6,10 @@
 //
 
 // MARK: - 教程来源
-// WWDC22 - 采用Swift泛型
-// WWDC22 - 使用Swift设计协议接口
-// WWDC20 - 在Swift中设计协议接口 Design protocol interface in Swift
-// WWDC23 - 使用参数包泛化API
+// WWDC22 - 采用S wift 泛型
+// WWDC22 - 使用S wift 设计协议接口
+// WWDC20 - 在 Swift 中设计协议接口 Design protocol interface in Swift
+// WWDC23 - 使用参数包泛化 API
 
 import Foundation
 

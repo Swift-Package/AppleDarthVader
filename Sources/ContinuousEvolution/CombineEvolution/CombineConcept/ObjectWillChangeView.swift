@@ -43,7 +43,6 @@ struct ObjectWillChangeView: View {
             } label: {
                 Text("Count Reset")
             }
-
         }
     }
 }

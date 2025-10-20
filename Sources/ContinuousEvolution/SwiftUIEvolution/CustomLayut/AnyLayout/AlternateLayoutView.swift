@@ -66,17 +66,3 @@ struct AlternateStackLayout: Layout {
         }
     }
 }
-
-// MARK: - 交错布局视图
-struct AlternateLayoutView: View {
-    var body: some View {
-        
-        
-        
-        
-    }
-}
-
-#Preview {
-    AlternateLayoutView()
-}
