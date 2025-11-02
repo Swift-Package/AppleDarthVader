@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "AppleDarthVader",
     defaultLocalization: "en",
-    platforms: [.iOS(.v18), .macOS(.v15), .watchOS(.v11), .tvOS(.v18), .visionOS(.v2)],
+    platforms: [.iOS(.v18), .macOS(.v26), .watchOS(.v26), .tvOS(.v26), .visionOS(.v26)],
     products: [
         // MARK: - 纯 Swift 库
         .library(name: "AppleDarthVader", targets: ["AppleDarthVader"]),
@@ -93,8 +93,11 @@ let package = Package(
                         "-Xfrontend",
                         "-warn-long-function-bodies=1000",
                         "-Xfrontend",
-                        "-warn-long-expression-type-checking=1000"
+                        "-warn-long-expression-type-checking=1000",
+                        // "-Xfrontend -disable-sendable-checks"
+						// "-Xfrontend -disable-actor-isolation-checks",
                     ]),
+                    // .enableUpcomingFeature("InternalImportsByDefault"),
                     .treatWarning("DeprecatedDeclaration", as: .error),
                     .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
                     .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release)),
@@ -161,3 +164,9 @@ let package = Package(
 //extension OpenAnalyticEvent {
 //    static let btnTap = OpenAnalyticEvent(name: "btnTap")
 //}
+
+//#if hasFeature(InternalImportByDefault)
+//fileprivate import ContinuousEvolution
+//#else
+//import ContinuousEvolution
+//#endif
