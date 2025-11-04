@@ -32,6 +32,9 @@
     "Hello, world!" : {
 
     },
+    "Hello, World!" : {
+
+    },
     "Home" : {
 
     },
@@ -49,6 +52,9 @@
       }
     },
     "Search" : {
+
+    },
+    "Special Text" : {
 
     },
     "Start" : {
@@ -72,6 +78,9 @@
       }
     },
     "String to Data conversion error" : {
+
+    },
+    "Toggle Color" : {
 
     },
     "Translate" : {
