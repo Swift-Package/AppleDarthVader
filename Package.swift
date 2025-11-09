@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "AppleDarthVader",
     defaultLocalization: "en",
-    platforms: [.iOS(.v18), .macOS(.v26), .watchOS(.v26), .tvOS(.v26), .visionOS(.v26)],
+    platforms: [.iOS(.v26), .macOS(.v26), .watchOS(.v26), .tvOS(.v26), .visionOS(.v26)],
     products: [
         // MARK: - 纯 Swift 库
         .library(name: "AppleDarthVader", targets: ["AppleDarthVader"]),

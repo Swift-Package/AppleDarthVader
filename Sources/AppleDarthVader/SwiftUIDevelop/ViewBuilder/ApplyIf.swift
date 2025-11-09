@@ -6,6 +6,7 @@
 //
 
 // MARK: - 微信公众号 - iOS 新知
+// MARK: - ⚠️这个修饰符扩展在 王巍《SwiftUI 编程思想》中被标记为不建议使用的反面模式
 
 import SwiftUI
 
@@ -27,4 +28,29 @@ public extension View {
             self
         }
     }
+}
+
+fileprivate struct ApplyIfView: View {
+    
+    @State var x = true
+    
+    var body: some View {
+        Text("Hello")
+            .applyIf(x) { t in
+                t.background(.yellow)
+            }
+        Button {
+            x.toggle()
+        } label: {
+            Text("Change")
+        }
+
+    }
+}
+
+#Preview {
+    
+    @Previewable @State var x = true
+    
+    ApplyIfView(x: x)
 }

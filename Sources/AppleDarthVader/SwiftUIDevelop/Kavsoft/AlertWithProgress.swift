@@ -21,7 +21,6 @@ fileprivate struct SwiftUIView: View {
             List {
                 Button {
                     showAlert.toggle()
-                    
                     Task {
                         for _ in 1...10 {
                             try? await Task.sleep(for: .seconds(1))

@@ -10,7 +10,7 @@
 
 import SwiftUI
 
-class CounterViewModel: ObservableObject {
+fileprivate class CounterViewModel: ObservableObject {
     
     @Published var count = 5
     
@@ -20,7 +20,7 @@ class CounterViewModel: ObservableObject {
 }
 
 // MARK: - ObservedObject 和 StateObject 的区别
-struct ObservedObjectViaStateObjectView: View {
+fileprivate struct ObservedObjectViaStateObjectView: View {
     
     @State var randomNumber = 0
     
@@ -47,7 +47,7 @@ struct ObservedObjectViaStateObjectView: View {
 }
 
 // MARK: - 使用ObservedObject
-struct ObservedObjectView: View {
+fileprivate struct ObservedObjectView: View {
     
     @ObservedObject var viewModel = CounterViewModel()
     
@@ -65,7 +65,7 @@ struct ObservedObjectView: View {
 }
 
 // MARK: - 使用StateObject 数据不会被破坏
-struct ViaStateObjectView: View {
+fileprivate struct ViaStateObjectView: View {
     
     @StateObject var viewModel = CounterViewModel()// ⚠️如果这个再传递给子视图,重新渲染View时子视图的viewModel依然保持之前的数据,无论子视图用 @StateObject 还是 @ObservedObject 都会保留数据
     
@@ -86,7 +86,7 @@ struct ViaStateObjectView: View {
     }
 }
 
-struct ViaStateObjectChildView: View {
+fileprivate struct ViaStateObjectChildView: View {
     
     @ObservedObject var viewModel: CounterViewModel// ⚠️子视图用 @ObservedObject 接收父视图传递过来的数据, 使用 @StateObject 也可以但是不推荐
     

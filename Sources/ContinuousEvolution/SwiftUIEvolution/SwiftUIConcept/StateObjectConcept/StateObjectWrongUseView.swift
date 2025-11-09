@@ -10,14 +10,22 @@
 
 import SwiftUI
 
-fileprivate struct StateObjectWrongUseView: View {
-    var body: some View {
-        Text("Apple")
+fileprivate class Movie {
+    
+    var name: String
+    
+    init(name: String) {
+        self.name = name
     }
 }
 
-#Preview {
-    StateObjectWrongUseView()
+fileprivate class MovieDetailsViewModel: ObservableObject {
+    
+    var movie: Movie
+    
+    init(movie: Movie) {
+        self.movie = movie
+    }
 }
 
 fileprivate struct MovieDetailsView: View {
@@ -32,22 +40,10 @@ fileprivate struct MovieDetailsView: View {
     }
     
     var body: some View {
-        
+        Text(viewModel.movie.name)
     }
 }
 
-fileprivate class MovieDetailsViewModel: ObservableObject {
-    var movie: Movie
-    
-    init(movie: Movie) {
-        self.movie = movie
-    }
-}
-
-fileprivate class Movie {
-    var name: String
-    
-    init(name: String) {
-        self.name = name
-    }
+#Preview {
+    MovieDetailsView(movie: .init(name: "Apple"))
 }

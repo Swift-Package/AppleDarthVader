@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class StateObjectViewModel: ObservableObject {
+fileprivate class StateObjectViewModel: ObservableObject {
     
     @Published var heroName: [String] = []
     
@@ -20,7 +20,7 @@ class StateObjectViewModel: ObservableObject {
     }
 }
 
-struct StateObjectView: View {
+fileprivate struct StateObjectView: View {
     
     @StateObject var viewModel: StateObjectViewModel = StateObjectViewModel()
     
@@ -53,7 +53,7 @@ struct StateObjectView: View {
     }
 }
 
-struct FavoriteView: View {
+fileprivate struct FavoriteView: View {
     
     @StateObject var viewModel: StateObjectViewModel
     

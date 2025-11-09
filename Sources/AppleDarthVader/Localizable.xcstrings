@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -11,6 +21,12 @@
 
     },
     "Avocado Toast" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Change" : {
 
     },
     "Continue" : {
@@ -26,13 +42,13 @@
     "Data to String conversion error" : {
 
     },
+    "Hello" : {
+
+    },
     "Hello World" : {
 
     },
     "Hello, world!" : {
-
-    },
-    "Hello, World!" : {
 
     },
     "Home" : {
@@ -51,7 +67,13 @@
         }
       }
     },
+    "Progress Alert" : {
+
+    },
     "Search" : {
+
+    },
+    "Show Alert" : {
 
     },
     "Special Text" : {
