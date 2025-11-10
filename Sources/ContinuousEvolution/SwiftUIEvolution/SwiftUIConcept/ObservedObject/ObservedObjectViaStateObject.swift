@@ -17,12 +17,14 @@ fileprivate class CounterViewModel: ObservableObject {
     func increaseCount() {
         count += 1
     }
+    
+    nonisolated(unsafe) static let shared = CounterViewModel()
 }
 
 // MARK: - ObservedObject 和 StateObject 的区别
 fileprivate struct ObservedObjectViaStateObjectView: View {
     
-    @State var randomNumber = 0
+    @State private var randomNumber = 0
     
     var body: some View {
         VStack {
@@ -46,17 +48,19 @@ fileprivate struct ObservedObjectViaStateObjectView: View {
     }
 }
 
-// MARK: - 使用ObservedObject
+// MARK: - 使用 ObservedObject 持有一个内部初始化的属性数据会被破坏
 fileprivate struct ObservedObjectView: View {
     
-    @ObservedObject var viewModel = CounterViewModel()
+    @ObservedObject var viewModel = CounterViewModel()      // 每次视图刷新就被破坏了
+    @ObservedObject var viewModel1 = CounterViewModel.shared// 外部管理的数据源始终存在
     
     var body: some View {
         VStack {
             Text("Count: \(viewModel.count)")
-            
+            Text("Count: \(viewModel1.count)")
             Button {
                 viewModel.increaseCount()
+                viewModel1.increaseCount()
             } label: {
                 Text("Increase @ObservedObject ViewModel Count")
             }
@@ -64,10 +68,12 @@ fileprivate struct ObservedObjectView: View {
     }
 }
 
-// MARK: - 使用StateObject 数据不会被破坏
+// MARK: - 使用 StateObject 数据不会被破坏
 fileprivate struct ViaStateObjectView: View {
     
-    @StateObject var viewModel = CounterViewModel()// ⚠️如果这个再传递给子视图,重新渲染View时子视图的viewModel依然保持之前的数据,无论子视图用 @StateObject 还是 @ObservedObject 都会保留数据
+    @StateObject var viewModel = CounterViewModel()
+    // ⚠️如果这个再传递给子视图,重新渲染 View 时子视图的 viewModel 依然保持之前的数据
+    // 无论子视图用 @StateObject 还是 @ObservedObject 都会保留数据
     
     var body: some View {
         VStack {

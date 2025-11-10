@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - 遵守 ObservableObject 协议并使用 @Published 的计数器模型
 fileprivate final class ModelP: ObservableObject {
     @Published var value = 0
 }

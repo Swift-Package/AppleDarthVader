@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - 视图模型
 fileprivate class StateObjectViewModel: ObservableObject {
     
     @Published var heroName: [String] = []
@@ -22,16 +23,14 @@ fileprivate class StateObjectViewModel: ObservableObject {
 
 fileprivate struct StateObjectView: View {
     
-    @StateObject var viewModel: StateObjectViewModel = StateObjectViewModel()
-    
     @State var path: [String] = []
+    @StateObject var viewModel = StateObjectViewModel()
     
     var body: some View {
         NavigationStack(path: $path) {
             List(viewModel.heroName, id: \.self) { hero in
                 Text(hero)
             }
-            .navigationTitle("漫威英雄")
             .toolbar {
                 Button {
                     viewModel.addNewHero("Caption")
@@ -55,7 +54,7 @@ fileprivate struct StateObjectView: View {
 
 fileprivate struct FavoriteView: View {
     
-    @StateObject var viewModel: StateObjectViewModel
+    @ObservedObject var viewModel: StateObjectViewModel// 应该使用 ObservedObject 接受父视图传递过来的数据
     
     var body: some View {
         List(viewModel.heroName, id: \.self) { hero in
