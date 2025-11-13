@@ -135,25 +135,6 @@ let package = Package(
     ],
     swiftLanguageModes: [.v6]
 )
-//public final class TouchUISwitchRequest: Request {
-//    
-//    public private(set) var touchOn: Bool
-//    
-//    public init(_ touchOn: Bool) {
-//        self.touchOn = touchOn
-//        super.init(Command.COMMAND_TOUCH_UI)
-//    }
-//    
-//    public override func getPayload() -> Data {
-//        let value: UInt8 = touchOn ? 0x01 : 0x00
-//        return Data([value])
-//    }
-//}
-
-//extension Command {
-//    // 新增
-//    public static let COMMAND_TOUCH_UI: UInt8           = 0x33 // TouchUI
-//}
 // MARK: - https://www.youtube.com/watch?v=k90TKBVjo9c
 //// MARK: - 开放封闭原则
 //struct OpenAnalyticEvent {

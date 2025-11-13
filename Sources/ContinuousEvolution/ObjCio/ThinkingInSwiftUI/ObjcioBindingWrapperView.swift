@@ -7,12 +7,49 @@
 
 import SwiftUI
 
-struct ObjcioBindingWrapperView: View {
-    var body: some View {
-        
-    }
+// MARK: - 不使用 @Binding 的计数器
+fileprivate struct RawCounter: View {
+	
+	var value: Int
+	var setValue: (Int) -> Void
+	
+	var body: some View {
+		Button("Increment\(value)") {
+			setValue(value + 1)// 按下按钮将 value 加上 1 回调出去
+		}
+	}
 }
 
-#Preview {
-    ObjcioBindingWrapperView()
+fileprivate struct ContentView: View {
+	
+	@State private var value = 0
+	
+	var body: some View {
+		RawCounter(value: value) { new in
+			value = new
+		}
+	}
 }
+
+#Preview("不使用 @Binding 的计数器") { 
+	ContentView()
+}
+
+fileprivate struct Counter: View {
+	
+	@Binding var value: Int
+	
+	var body: some View {
+		Button("Increment\(value)") {
+			value += 1
+		}
+	}
+}
+
+#Preview("使用 @Binding 的计数器") {
+	@Previewable @State var value = 0
+	Counter(value: $value)
+}
+
+
+
