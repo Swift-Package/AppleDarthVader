@@ -7,6 +7,23 @@
 
 import SwiftUI
 
+// MARK: - 使用 @Binding 的计数器
+fileprivate struct Counter: View {
+    
+    @Binding var value: Int
+    
+    var body: some View {
+        Button("Increment\(value)") {
+            value += 1
+        }
+    }
+}
+
+#Preview("使用 @Binding 的计数器") {
+    @Previewable @State var value = 0
+    Counter(value: $value)
+}
+
 // MARK: - 不使用 @Binding 的计数器
 fileprivate struct RawCounter: View {
 	
@@ -34,22 +51,3 @@ fileprivate struct ContentView: View {
 #Preview("不使用 @Binding 的计数器") { 
 	ContentView()
 }
-
-fileprivate struct Counter: View {
-	
-	@Binding var value: Int
-	
-	var body: some View {
-		Button("Increment\(value)") {
-			value += 1
-		}
-	}
-}
-
-#Preview("使用 @Binding 的计数器") {
-	@Previewable @State var value = 0
-	Counter(value: $value)
-}
-
-
-

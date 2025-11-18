@@ -23,28 +23,8 @@ fileprivate struct BehindState1: View {
     }
 }
 
-#Preview {
+#Preview("不使用 @State 包装器") {
     BehindState1()
-}
-
-fileprivate struct ObjcioBehindState: View {
-    
-    let counter = Counter()
-    
-    var body: some View {
-        VStack {
-            counter
-            counter
-            
-            // MARK: - 从外部改变属性是没有用的
-            Button {
-                counter.value = 100
-                counter.$value.wrappedValue = 100
-            } label: {
-                Text("Change")
-            }
-        }
-    }
 }
 
 fileprivate struct Counter: View {
@@ -58,6 +38,26 @@ fileprivate struct Counter: View {
     var body: some View {
         Button("Counter\(value)") {
             value += 1
+        }
+    }
+}
+
+fileprivate struct ObjcioBehindState: View {
+    
+    let counter = Counter()
+    
+    var body: some View {
+        VStack {
+            counter
+            counter
+            
+            // MARK: - 从外部改变属性是没有用的所以 @State 包装通常作为 Private
+            Button {
+                counter.value = 100
+                counter.$value.wrappedValue = 100
+            } label: {
+                Text("Change")
+            }
         }
     }
 }
