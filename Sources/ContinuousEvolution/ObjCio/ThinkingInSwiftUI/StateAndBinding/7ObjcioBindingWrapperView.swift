@@ -51,3 +51,42 @@ fileprivate struct ContentView: View {
 #Preview("不使用 @Binding 的计数器") { 
 	ContentView()
 }
+
+// MARK: - 使用 Binding 类型合并 value 和 setValue
+fileprivate struct BindingCounter: View {
+	
+	var value: Binding<Int>
+	
+	var body: some View {
+		Button("Increment\(value.wrappedValue)") { 
+			value.wrappedValue += 1
+		}
+	}
+}
+
+#Preview("使用 Binding 类型合并 value 和 setValue") {
+	@Previewable @State var value = 0
+	BindingCounter(value: $value)
+}
+
+// MARK: - 语法糖
+fileprivate struct ContentView1: View {
+	
+	private var _value = State(initialValue: 0)
+	private var value: Int {
+		get { _value.wrappedValue }
+		set { _value.wrappedValue = newValue }
+	}
+	
+	var body: some View {
+		Counter(value: _value.projectedValue)
+	}
+}
+
+#Preview("语法糖") { 
+	ContentView1()
+}
+
+// 我们可以看到 $value 其实就是 _value.projectedValue 的简写
+// 美元符语法并不是 SwiftUI 特有的它是 Swift 属性包装器的⼀个特性
+// 美元符就是访问属性包装器的 projectedValue 值的⼀个语法糖

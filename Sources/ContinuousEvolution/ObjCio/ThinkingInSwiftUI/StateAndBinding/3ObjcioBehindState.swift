@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+fileprivate struct StateCounter: View {
+	
+	@State var value = 0
+	
+	var body: some View {
+		Button("Counter\(value)") {
+			value += 1
+		}
+	}
+}
+
+#Preview("使用 @State 包装的计数器") {
+	StateCounter()
+}
+
 // MARK: - 不使用 @State 包装器
 fileprivate struct BehindState1: View {
     
