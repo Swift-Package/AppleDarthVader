@@ -11,14 +11,14 @@
 import SwiftUI
 
 fileprivate class CounterViewModel: ObservableObject {
+	
+	nonisolated(unsafe) static let shared = CounterViewModel()
     
     @Published var count = 5
     
     func increaseCount() {
         count += 1
     }
-    
-    nonisolated(unsafe) static let shared = CounterViewModel()
 }
 
 // MARK: - ObservedObject 和 StateObject 的区别
@@ -29,12 +29,12 @@ fileprivate struct ObservedObjectViaStateObjectView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("RandomNumber \(randomNumber)")
+                Text("State RandomNumber \(randomNumber)")
                 
                 Button {
                     randomNumber = (1...100).randomElement()!
                 } label: {
-                    Text("改变 State 刷新整个视图")
+                    Text("改变 State RandomNumber 刷新整个视图")
                 }
             }
             
@@ -57,14 +57,16 @@ fileprivate struct ObservedObjectView: View {
     var body: some View {
         VStack {
             Text("Count: \(viewModel.count)")
-            Text("Count: \(viewModel1.count)")
+            Text("单例Count: \(viewModel1.count)")
             Button {
                 viewModel.increaseCount()
                 viewModel1.increaseCount()
             } label: {
-                Text("Increase @ObservedObject ViewModel Count")
+                Text("增加两个视图模型 VM 的 Value")
             }
         }
+		.padding(32)
+		.background(.cyan)
     }
 }
 
@@ -82,13 +84,15 @@ fileprivate struct ViaStateObjectView: View {
             Button {
                 viewModel.increaseCount()
             } label: {
-                Text("Increase @StateObject ViewModel Count")
+                Text("增加 StateObject 包装的视图模型 VM 的 Value")
             }
             
             ViaStateObjectChildView(viewModel: viewModel)
                 .padding()
                 .background(.gray)
         }
+		.padding(32)
+		.background(.cyan)
     }
 }
 
@@ -103,7 +107,7 @@ fileprivate struct ViaStateObjectChildView: View {
             Button {
                 viewModel.increaseCount()
             } label: {
-                Text("Increase @StateObject ViewModel Count")
+                Text("增加 ObservedObject 接收的父视图传递过来的的视图模型 VM 的 Value")
             }
         }
     }

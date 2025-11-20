@@ -26,6 +26,7 @@ struct EnvironmentObjectView: View {
     @Environment(AppSettings.self) private var settings
     
     var body: some View {
+		// 在 Body 中直接生成绑定
         @Bindable var bindableSettings = settings
         
         Form {

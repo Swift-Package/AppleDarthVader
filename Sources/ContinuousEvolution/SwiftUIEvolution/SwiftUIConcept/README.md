@@ -1,8 +1,6 @@
 # 🌈 SwiftUIConcept SwiftUI 概念学习汇总
 - Bindable                          绑定修饰符
 ---- BindableView
-
-- BindingGeneric                    范型绑定包装器
 ---- ConvenienceBindableView        便利绑定
 
 - EnvironmentObject                 环境对象

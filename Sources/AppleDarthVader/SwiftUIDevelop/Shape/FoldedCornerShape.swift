@@ -31,17 +31,13 @@ public struct FoldedCornerShape: Shape {
 }
 
 #Preview {
-    Button {
-        print("开通")
-    } label: {
-        ZStack {
-            FoldedCornerShape()
-                .fill(Color.orange)
-                .frame(width: 200, height: 100)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-            Text("开通")
-                .font(.title)
-                .foregroundStyle(.white)
-        }
-    }
+	ZStack {
+		FoldedCornerShape()
+			.fill(Color.orange)
+			.frame(width: 200, height: 100)
+			.clipShape(RoundedRectangle(cornerRadius: 12))
+		Text("开通")
+			.font(.title)
+			.foregroundStyle(.white)
+	}
 }

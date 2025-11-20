@@ -7,9 +7,21 @@
 
 import SwiftUI
 
+// MARK: - 搜索框需要一个绑定值并可以改变这个值
+struct SearchField: View {
+	
+	@Binding var query: String
+	
+	var body: some View {
+		TextField("Search", text: $query)
+			.textFieldStyle(.roundedBorder)
+			.padding()
+	}
+}
+
 @Observable
 class QueryViewModel {
-    var query = ""
+    var query = "AAAA"
 }
 
 // MARK: - 主视图
@@ -21,6 +33,10 @@ struct BindableView: View {
         VStack {
             
             Text(viewModel.query)
+			
+			TextField("", text: $viewModel.query)
+				.textFieldStyle(.roundedBorder)
+				.padding()
             
             SearchField(query: $viewModel.query)
             
@@ -30,23 +46,6 @@ struct BindableView: View {
         }
     }
 }
-
-#Preview {
-    BindableView()
-}
-
-// MARK: - 搜索框需要一个绑定值并可以改变这个值
-struct SearchField: View {
-    
-    @Binding var query: String
-    
-    var body: some View {
-        TextField("Search", text: $query)
-            .textFieldStyle(.roundedBorder)
-            .padding()
-    }
-}
-
 // MARK: - 搜索视图
 struct SearchView: View {
     
@@ -68,11 +67,17 @@ struct BindableSearchView: View {
     @Bindable var viewModel: QueryViewModel
     
     var body: some View {
+		// 使用 Bindable 也是直接传 ViewModel 不用手动创建 Binding
         SearchField(query: $viewModel.query)
     }
 }
 
+#Preview {
+	BindableView()
+}
+
 // MARK: - 关于 Bindable 学习顺序
+// 0.文档中关于 Bindable 包装器的简单范例
 // 1.ConvenienceBindableView
 // 2.BindableView
 // 3.EnvironmentObjectView

@@ -43,7 +43,7 @@ fileprivate struct ConvenienceBindableView: View {
             
             // MARK: - 3.便利绑定
             // TextField("Name", text: $appState.person.name)// ⚠️无法这样绑定
-            TextField("Name", text: Bindable(appState).person.name)
+            TextField("", text: Bindable(appState).person.name)
             
         }
         .padding()
