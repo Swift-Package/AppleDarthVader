@@ -12,5 +12,5 @@
 - StateObjectConcept                StateObject的概念
 ---- StateObjectView
 
-- SystemEnvironment                 系统环境
+- SystemEnvironment                 系统环境(非自定义环境对象)
 

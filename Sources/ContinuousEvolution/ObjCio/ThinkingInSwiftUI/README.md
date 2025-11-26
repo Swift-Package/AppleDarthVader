@@ -1,4 +1,4 @@
-#  🌈 SwiftUI 编程思想
+#  🌈 SwiftUI 编程思想 (⚠️使用一份 README 管理就好了)
 #
 # 一.状态和绑定
 ## 1.ObjcioViewTree                         视图树的概念
@@ -25,10 +25,10 @@
 ## 11.AlignmentIDCustom							自定义对齐标识跨越容器视图进行对齐
 ##
 # 三.环境
-## 1.
-## 2.环境读取
-## 3.自定义环境Key 以及 @Entry 宏
-## 4.
+## 1.ObjCioEnvironmentView						环境读取以及 KeyPath 细分
+## 2.ObjCioCustomEnvironmentKeyView				自定义环境 Key
+## 3.ObjCioBadgeStyle								自定义组件角标样式环境注入
+## 4.ObjCioEnvironmentAnnouncementsView		自定义环境注意事项
 ##
 # 四.动画
 ## .

@@ -5,24 +5,23 @@
 //  Created by 杨俊艺 on 2025/8/31.
 //
 
-// How to Use @Environment & @EnvironmentObject in 2025 - https://www.youtube.com/watch?v=5enyOSqkL-w
-
 import SwiftUI
 
-struct SystemEnvironment: View {
+fileprivate struct SystemEnvironmentView: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    @Environment(\.verticalSizeClass) var verticalSizeClass
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+	@Environment(\.openURL) var openURL
     @Environment(\.scenePhase) var scenePhase
-    @Environment(\.openURL) var openURL
+	@Environment(\.colorScheme) var colorScheme
+	@Environment(\.verticalSizeClass) var verticalSizeClass
+	@Environment(\.horizontalSizeClass) var horizontalSizeClass
+	@Environment(\.dynamicTypeSize.isAccessibilitySize) private var isAccessibilitySize
     
     @State var backgroundTime: Date?
     
     var body: some View {
         VStack {
             Button {
-                openURL(URL(string: "Apple.com")!)
+                openURL(URL(string: "Apple.com")!, prefersInApp: true)
             } label: {
                 Text("Open Apple.com")
             }
@@ -31,8 +30,6 @@ struct SystemEnvironment: View {
                     if let backgroundTime {
                         Text("应用切换到后的时间 \(backgroundTime, style: .time)")
                     }
-                } else {
-                    
                 }
             }
         }
@@ -52,5 +49,5 @@ struct SystemEnvironment: View {
 }
 
 #Preview {
-    SystemEnvironment()
+	SystemEnvironmentView()
 }
