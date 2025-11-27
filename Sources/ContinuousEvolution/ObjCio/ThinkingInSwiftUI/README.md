@@ -9,7 +9,7 @@
 ## 6.ObjcioObservedObjectWrapperView        @ObservedObject 属性包装器
 ## 7.ObjcioBindingWrapperView               @Binding 属性包装器
 ## 8.Sugar										  $表示的语法糖
-## 9.ObjcioBindableWrapperView              @Bindable 为了解决的问题
+## 9.ObjcioBindableWrapperView              @Bindable 为了解决什么问题
 ##
 # 二.布局 - 此章节有用的代码提取到 SwiftUIDevelop - Layout - LayoutExtensions 中
 ## 1.FixedSizeView
@@ -27,7 +27,7 @@
 # 三.环境
 ## 1.ObjCioEnvironmentView						环境读取以及 KeyPath 细分
 ## 2.ObjCioCustomEnvironmentKeyView				自定义环境 Key
-## 3.ObjCioBadgeStyle								自定义组件角标样式环境注入
+## 3.ObjCioBadgeStyle								自定义组件角标样式(⚠️ViewModifier使用环境注入)
 ## 4.ObjCioEnvironmentAnnouncementsView		自定义环境注意事项
 ##
 # 四.动画

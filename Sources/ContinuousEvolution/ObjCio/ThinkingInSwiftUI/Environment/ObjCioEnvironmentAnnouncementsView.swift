@@ -14,7 +14,7 @@ final class UserModel {
 
 fileprivate struct ObjCioEnvironmentAnnouncementsView: View {
 	
-	// @Environment var userModel: UserModel?
+	@Environment(UserModel.self) var userModel: UserModel?
 	
     var body: some View {
 		

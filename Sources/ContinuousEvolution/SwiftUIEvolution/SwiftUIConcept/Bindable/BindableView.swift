@@ -80,4 +80,4 @@ struct BindableSearchView: View {
 // 0.文档中关于 Bindable 包装器的简单范例
 // 1.ConvenienceBindableView
 // 2.BindableView
-// 3.EnvironmentObjectView
+// 3.EnvironmentObjectView		创建环境对象绑定

@@ -11,8 +11,7 @@ import SwiftUI
 // SwiftUI 的基于宏的对象观察模型在绑定⽅⾯提出了⼀个挑战
 // ⽤于构建绑定的 $ 语法依赖于属性包装器的 projectedValue 值
 // 由于在使⽤ @Observable 宏时通常不再需要使⽤属性包装器因此我们⽆法像使⽤ @ObservedObject 属性包装器时那样以相同的⽅式创建绑定
-// 为了解决这个问题，SwiftUI 引⼊了 Bindable 包装器，你可以将它作为属性包装器使⽤也可以直接以内联的⽅式使⽤
-// 例如作为属性包装器使⽤时
+// 为了解决这个问题 SwiftUI 引⼊了 Bindable 包装器，你可以将它作为属性包装器使⽤也可以直接以内联的⽅式使⽤
 
 // MARK: - 使用 ObservedObject 包装器并使用 $ 绑定
 fileprivate final class OldModel: ObservableObject {
@@ -29,7 +28,7 @@ fileprivate struct OldCounter: View {
 }
 
 #Preview("使用 ObservedObject 包装器并使用 $ 绑定") {
-	@Previewable @State var model = OldModel()
+	@Previewable @StateObject var model = OldModel()
 	OldCounter(model: model)
 }
 
@@ -64,12 +63,12 @@ fileprivate struct OldFatelCounter: View {
 	}
 }
 
-#Preview("使用旧的 Binding 包装器不可用") {
+#Preview("使用旧的 Binding 包装器不可用无法触发UI") {
 	@Previewable @State var model = OldModel()
 	OldFatelCounter(model: $model)
 }
 
-
+// MARK: - 使用新的 Bindable 包装器
 fileprivate struct CounterX: View {
 	
 	@Bindable var model: OModel
@@ -100,7 +99,7 @@ fileprivate struct Counter: View {
 	}
 }
 
-#Preview {
+#Preview("单例状态") {
 	Counter(model: Model.shared)
 }
 
