@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: - 2自定义跳转按钮并传递数据
-struct NavigationViewCustom: View {
+fileprivate struct NavigationViewCustom: View {
     var body: some View {
         NavigationStack {
             VStack  {

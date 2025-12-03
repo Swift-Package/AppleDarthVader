@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: - 4状态触发跳转
-struct NavigationIsPresented: View {
+fileprivate struct NavigationIsPresented: View {
     
     @State private var isPresented = false
     

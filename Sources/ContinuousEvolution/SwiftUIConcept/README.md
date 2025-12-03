@@ -1,39 +1,18 @@
 # 🌈 SwiftUIConcept SwiftUI 概念学习汇总
-
+# 🌈 AppStorage
+## 1.AppStorageView						@AppStorage 包装器的简单使用
+##
 # 🌈 Bindable					绑定修饰符
 ## BindableView
 ## ConvenienceBindableView			便利绑定
 ##
-##
-##
-##
-# 🌈 ObservedObject		可观察对象
-## ObservedObjectViaStateObject   	可观察对象生命周期以及视图刷新ObservedObject和StateObject
-##
-##
-##
-##
-# 🌈 StateObjectConcept
-## StateObjectView
-##
-##
-##
-##
-# 🌈 SystemEnvironment	系统环境(非自定义环境对象)
-## SystemEnvironmentView				系统内置的环境
-##
-##
-##
-##
 # 🌈 EnvironmentObject 	环境对象
-## 1.EntryMacroView
+## 1.EntryMacroView								@Entry 宏为了解决的问题
 ## 2.EnvironmentObjectView					环境对象注入(@Bindable临时绑定) 低于 iOS 17 版本的处理
 ## 3.ObjCioEnvironmentView					环境读取以及 KeyPath 细分
 ## 4.ObjCioCustomEnvironmentKeyView			自定义环境 Key
 ## 5.ObjCioEnvironmentAnnouncementsView	自定义环境注意事项
-## 6.
-##
-# 🌈 环境对象教程来源(按顺序阅读)
+# 	环境对象教程来源(按顺序阅读)
 ## 0.⚠️深入探索 SwiftUI 中的环境 - https://azamsharp.com/2024/11/18/deep-dive-into-environment-in-swiftui.html
 ## 0.⚠️(上面的文章看了这个视频就没必要看了)A Deep Dive into Environment in SwiftUI - https://www.youtube.com/watch?v=h_ukWsyNm8U
 ## .使用环境变量 @EnvironmentObject 传递页面之间的数据 - @EnvironmentObject Explained in SwiftUI | iOS 17 - https://www.youtube.com/watch?v=iis7YSVIawg
@@ -48,5 +27,27 @@
 ## .11 SwiftUI State Management & Data Flow | Watch at 1.5x - https://www.youtube.com/watch?v=oaP-R3ttZXc
 ## .全局主题色 SwiftUI’s Entry Macro: Simplifying Environment Keys & Theming - https://www.youtube.com/watch?v=nun_jIRiYP0&t=295s
 ## .SwiftUI 编程思想 - 环境章节
-###
-###
+##
+# 🌈 NavigationConcept	导航的概念
+## 1.NavigationStackLinkSimple		最简单的无参数跳转
+## 2.NavigationViewCustom				自定义跳转按钮并传递数据
+## 3.NavigationPath						多层级跳转并传递数据
+## 4.NavigationIsPresented			状态触发跳转
+##
+##
+## 🌈 ObservableMacro 🌈		可观察宏
+## 1.ObservableWithStateView			在 SwiftUI 层级结构中初始化 @Observable 类
+##
+##
+##
+# 🌈 ObservedObject		可观察对象
+## ObservedObjectViaStateObject   	可观察对象生命周期以及视图刷新ObservedObject和StateObject
+##
+# 🌈 StateObjectConcept
+## StateObjectView
+## StateObjectWrongUseView			StateObject 的错误方法
+##
+# 🌈 SystemEnvironment	系统环境(非自定义环境对象)
+## 1.ColorSchemeView					系统色彩方案
+## 2.SystemEnvironmentView			系统内置的环境
+## 3.RedefineSystemEnvironmentView	系统内置的环境行为重写

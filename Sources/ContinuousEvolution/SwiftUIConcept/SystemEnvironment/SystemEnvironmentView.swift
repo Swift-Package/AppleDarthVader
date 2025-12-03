@@ -23,7 +23,11 @@ fileprivate struct SystemEnvironmentView: View {
             Button {
                 openURL(URL(string: "Apple.com")!, prefersInApp: true)
             } label: {
-                Text("Open Apple.com")
+				HStack {
+					Text("Open Apple.com")
+					Text("Open")
+						.textCase(.none)
+				}
             }
             Group {
                 if verticalSizeClass == .compact {
@@ -33,6 +37,7 @@ fileprivate struct SystemEnvironmentView: View {
                 }
             }
         }
+		.environment(\.textCase, .uppercase)
         .onChange(of: scenePhase) { _, newScenePhase in
             switch newScenePhase {
             case .background:

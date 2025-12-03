@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: - 1最简单的无参数跳转
-struct NavigationStackLinkSimple: View {
+fileprivate struct NavigationStackLinkSimple: View {
     var body: some View {
         NavigationStack {
             NavigationLink("跳转") {

@@ -35,7 +35,7 @@ fileprivate final class ObservableClass {
 
 fileprivate struct ObservableCounter: View {
     
-    @State private var model = ObservableClass() // 使用简单的 @State
+	@State private var model = ObservableClass() // 使用简单的 @State
     
     var body: some View {
         Button("Increment\(model.value)") {
