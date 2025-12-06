@@ -13,10 +13,10 @@
 
 
 
-
-
-
-
-
-
+# 🌈 Swift 并发编程实战手册
+## 0.Swift 中的 MainActor 用法				https://www.avanderlee.com/swift/mainactor-dispatch-main-thread/
+## Swift 6.2 中易于上手的并发编程			https://www.avanderlee.com/concurrency/approachable-concurrency-in-swift-6-2-a-clear-guide/
+## Swift 中的 async/await 详解及代码示例	https://www.avanderlee.com/swift/async-await/
+##
+##
 

@@ -28,3 +28,17 @@ public extension Collection where Element: Hashable {
         Array(Set(self))
     }
 }
+
+public extension Collection where Element: Equatable & Hashable {
+	// MARK: - 是否包含重复元素
+	func containsDuplicates() -> Bool {
+		var seen = Set<Element>()
+		for element in self {
+			if seen.contains(element) {
+				return true
+			}
+			seen.insert(element)
+		}
+		return false
+	}
+}

@@ -6,6 +6,7 @@
 //
 
 // MARK: - 教程来源
+// Swift 面向协议编程 - https://www.youtube.com/watch?v=Q4ko0Ts8cXI
 // WWDC22 - 采用 Swift 泛型
 // WWDC22 - 使用 Swift 设计协议接口
 // WWDC20 - 在 Swift 中设计协议接口 Design protocol interface in Swift
