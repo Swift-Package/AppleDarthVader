@@ -15,9 +15,9 @@ let package = Package(
         // MARK: - 纯 C 库
         .library(name: "PureCLibrary", targets: ["PureCLibrary"]),
         // MARK: - WWDC 演示代码汇总不对外提供扩展
-        .library(name: "WWDCEsoterica", targets: ["WWDCEsoterica"]),
+        // .library(name: "WWDCEsoterica", targets: ["WWDCEsoterica"]),
         // MARK: - 持续进化学习笔记不对外提供扩展
-        .library(name: "ContinuousEvolution", targets: ["ContinuousEvolution"]),
+        // .library(name: "ContinuousEvolution", targets: ["ContinuousEvolution"]),
     ],
     dependencies: [
         .package(url: "https://github.com/devxoul/Then", branch: "master"),
@@ -52,8 +52,8 @@ let package = Package(
                         "-Xfrontend",
                         "-warn-long-expression-type-checking=1000"
                     ]),
-                    //.treatAllWarnings(as: .error)
-                    //.treatWarning("StrictMemorySafety", as: .error),
+                    // .treatAllWarnings(as: .error)
+                    // .treatWarning("StrictMemorySafety", as: .error),
                     // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
                     .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
                     .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release)),
@@ -135,8 +135,7 @@ let package = Package(
     ],
     swiftLanguageModes: [.v6]
 )
-// MARK: - https://www.youtube.com/watch?v=k90TKBVjo9c
-//// MARK: - 开放封闭原则
+// MARK: - 开放封闭原则 - https://www.youtube.com/watch?v=k90TKBVjo9c
 //struct OpenAnalyticEvent {
 //    let name: String
 //    
@@ -151,3 +150,20 @@ let package = Package(
 //#else
 //import ContinuousEvolution
 //#endif
+
+//class BaseQualcommDevice: NSObject {
+//	class var UUIDNotify: String { "FF18" }
+//	
+//	func printUUID() {
+//		print(Self.UUIDNotify)
+//	}
+//}
+//
+//class MyDevice: BaseQualcommDevice {
+//	override class var UUIDNotify: String { "ABCD" }
+//}
+//
+//let device = MyDevice()
+//device.printUUID()          // 输出 "ABCD"
+//print(BaseQualcommDevice.UUIDNotify) // 输出 "FF18"
+//print(MyDevice.UUIDNotify)  // 输出 "ABCD"

@@ -5,11 +5,11 @@
 //  Created by 杨俊艺 on 2024/11/4.
 //
 
-// 该RxSwift扩展来自kodeco网站 - RxSwift书籍教程项目 Combinestagram
+// 该 RxSwift 扩展来自 Kodeco 网站 - RxSwift 书籍教程项目 Combinestagram
 
+import UIKit
 import Photos
 import RxSwift
-import UIKit
 
 public extension PHPhotoLibrary {
     static var authorized: Observable<Bool> {

@@ -5,12 +5,12 @@
 //  Created by 杨俊艺 on 2024/11/4.
 //
 
-// 该RxSwift扩展来自kodeco网站 - RxSwift书籍教程项目 Combinestagram
+// 该 RxSwift 扩展来自 Kodeco网站 - RxSwift 书籍教程项目 Combinestagram
 
-import RxSwift
 import UIKit
+import RxSwift
 
-extension UIViewController {
+public extension UIViewController {
     func alert(title: String, text: String?) -> Completable {
         return Completable.create { [weak self] completable in
             let alertVC = UIAlertController(title: title, message: text, preferredStyle: .alert)
