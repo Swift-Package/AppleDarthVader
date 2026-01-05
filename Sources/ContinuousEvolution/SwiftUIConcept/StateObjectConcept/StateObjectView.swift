@@ -74,3 +74,47 @@ fileprivate struct FavoriteView: View {
 #Preview {
     StateObjectView()
 }
+
+// MARK: - 视图模型
+fileprivate class SwiftUIInitConceptViewModel: ObservableObject {
+	init() {
+		print("ViewModel 初始化")
+	}
+}
+
+// MARK: - 子视图
+fileprivate struct SwiftUIInitConceptChildView: View {
+	
+	@StateObject private var viewModel = SwiftUIInitConceptViewModel() // ⚠️StateObject标记不会每次重新创建
+	let isActive: Bool
+	
+	// MARK: - 自定义初始化器
+	init(isActive: Bool) {
+		self.isActive = isActive
+		print("子视图重新初始化")
+	}
+	
+	var body: some View {
+		Text("SwiftUI")
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
+			.ignoresSafeArea()
+			.background(isActive ? .red : .blue)
+	}
+}
+
+// MARK: - 主视图
+fileprivate struct SwiftUIInitConcept: View {
+	
+	@State private var isActive = false
+	
+	var body: some View {
+		SwiftUIInitConceptChildView(isActive: isActive)
+			.onTapGesture {
+				isActive.toggle()
+			}
+	}
+}
+
+#Preview("StateObject标记不会每次重新创建") {
+	SwiftUIInitConcept()
+}

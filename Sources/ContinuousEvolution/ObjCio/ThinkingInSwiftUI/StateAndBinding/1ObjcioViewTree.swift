@@ -51,3 +51,5 @@ fileprivate struct Greeting: View {
 // 当把 Group (以及它的修饰器) 当作 ScrollView 的根视图或者唯⼀⼦视图时
 // Group 的⾏为就会和 VStack 很像，修饰器也不再会被应⽤到 Group 中每个单独的视图中
 // 有另外⼀个例外那就是将 Group 放到 overlay 或者 background ⾥它会表现得像是⼀个 ZStack
+//
+// SwiftUI Group Still(?) Considered Harmful - https://twocentstudios.com/2025/12/12/swiftui-group-still-considered-harmful/
