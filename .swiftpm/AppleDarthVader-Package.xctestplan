@@ -13,17 +13,35 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:",
-        "identifier" : "AppleDarthVaderOCTests",
-        "name" : "AppleDarthVaderOCTests"
+        "identifier" : "PureCLibraryTests",
+        "name" : "PureCLibraryTests"
       }
     },
     {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CombineLearnTests",
+        "name" : "CombineLearnTests"
+      }
+    },
+    {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:",
         "identifier" : "AppleDarthVaderTests",
         "name" : "AppleDarthVaderTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AppleDarthVaderOCTests",
+        "name" : "AppleDarthVaderOCTests"
       }
     }
   ],
