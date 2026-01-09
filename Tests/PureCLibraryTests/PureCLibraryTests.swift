@@ -25,4 +25,22 @@ struct PureCLibraryTests {
         
         print("调用C函数相加 12 + 12 = " + "\(a.pr)")
     }
+
+	@Test func testParseBuffer() {
+		var bytes: [Int8] = [0, 1, -1, 127, -128]
+		
+		bytes.withUnsafeMutableBufferPointer { buf in
+			parse_buffer(buf.baseAddress, buf.count)
+		}
+		
+		#expect(bytes == [1, 2, 0, -128, -127])
+		
+		var bytes1: [Int8] = [0, 1, 2, 3, 4]
+		
+		bytes1.withUnsafeMutableBufferPointer { buf in
+			parse_buffer(buf.baseAddress, buf.count)
+		}
+		
+		#expect(bytes1 == [1, 2, 3, 4, 5])
+	}
 }

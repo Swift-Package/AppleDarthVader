@@ -52,8 +52,7 @@ public class PhotoWriter {
             return Disposables.create()
         })
     }
-
-    @MainActor
+	
     func savePhoto(_ image: UIImage) async throws -> String {
         try await withCheckedThrowingContinuation { continuation in
             var savedAssetId: String?

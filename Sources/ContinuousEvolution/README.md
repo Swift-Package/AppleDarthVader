@@ -40,12 +40,12 @@
 ## 伟大无须多言				https://kodeco.com
 ## 东坡肘子					https://fatbobman.com/en/
 ## 帽子轮廓					https://www.donnywals.com/
-## RocketSim 作者		https://www.avanderlee.com/
+## RocketSim 作者			https://www.avanderlee.com/
 ## 想象研究所				https://www.createwithswift.com/
-## 那些 Swift 的人		https://thosewhoswift.substack.com/
+## 那些 Swift 的人			https://thosewhoswift.substack.com/
 ##	韦斯利·马特洛克			https://www.wesleymatlock.com/blog/
 ## Seb Vidal				https://sebvidal.com/blog
-##
+## 写更好的 SwiftUI 代码	https://in.swiftui.wtf/home
 ##
 ##
 ##
@@ -66,9 +66,8 @@
 ##
 ##
 ## 使用 KeyPathComparator 根据属性值对元素进行排序		https://nilcoalescing.com/blog/SortElementsBasedOnAPropertyValueUsingKeyPathComparator/
-##
 ## 处理 SwiftUI 应用程序中的深层链接						https://www.donnywals.com/handling-deeplinks-in-a-swiftui-app/
-## 大型 SwiftUI 应用中的导航栈 + 深度链接				https://www.wesleymatlock.com/navigationstack-deep-linking-in-large-swiftui-apps/?utm_source=fatbobman%20weekly%20issue%2098&utm_medium=web
+## 大型 SwiftUI 应用中的导航栈 + 深度链接					https://www.wesleymatlock.com/navigationstack-deep-linking-in-large-swiftui-apps/?utm_source=fatbobman%20weekly%20issue%2098&utm_medium=web
 ## 重现 Apple Music 的搜索界面							https://sebvidal.com/blog/recreating-apple-musics-search-chips-ui
 ##
 ##

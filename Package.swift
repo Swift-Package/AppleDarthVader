@@ -15,9 +15,9 @@ let package = Package(
         // MARK: - 纯 C 库
         .library(name: "PureCLibrary", targets: ["PureCLibrary"]),
         // MARK: - WWDC 演示代码汇总不对外提供扩展
-        // .library(name: "WWDCEsoterica", targets: ["WWDCEsoterica"]),
+        .library(name: "WWDCEsoterica", targets: ["WWDCEsoterica"]),
         // MARK: - 持续进化学习笔记不对外提供扩展
-        // .library(name: "ContinuousEvolution", targets: ["ContinuousEvolution"]),
+        .library(name: "ContinuousEvolution", targets: ["ContinuousEvolution"]),
     ],
     dependencies: [
         .package(url: "https://github.com/devxoul/Then", branch: "master"),
@@ -52,8 +52,9 @@ let package = Package(
                         "-Xfrontend",
                         "-warn-long-expression-type-checking=1000"
                     ]),
-                    // .treatAllWarnings(as: .error)
+                    // .treatAllWarnings(as: .error),
                     // .treatWarning("StrictMemorySafety", as: .error),
+					// .treatWarning("DeprecatedDeclaration", as: .warning),
                     // .unsafeFlags(["-suppress-warnings"]),// 压制所有编译警告
                     .define("PACKAGECONFIGURATION_DEBUG", .when(configuration: .debug)),
                     .define("PACKAGECONFIGURATION_RELEASE", .when(configuration: .release)),
