@@ -5,6 +5,9 @@
 //  Created by 杨俊艺 on 2024/11/4.
 //
 
+// On Progressive Disclosure in Swift - Doug Gregor - Swift Craft 2025
+// https://www.youtube.com/watch?v=opqKGgJavkw
+
 import Foundation
 
 public extension Optional where Wrapped == String {}
@@ -14,4 +17,15 @@ public extension Optional {
     func unwrapped(or defaultValue: Wrapped) -> Wrapped {
         self ?? defaultValue
     }
+}
+
+public extension Optional {
+	func map<E: Error, U>(_ transfrom: (Wrapped) throws(E) -> U) throws(E) -> U? {
+		switch self {
+		case let value?:
+			 try transfrom(value)
+		case nil:
+			nil
+		}
+	}
 }

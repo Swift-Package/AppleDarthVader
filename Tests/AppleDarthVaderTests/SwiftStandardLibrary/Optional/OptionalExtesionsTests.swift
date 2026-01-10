@@ -20,4 +20,14 @@ struct OptionalExtesionsTests {
 		let result = name.unwrapped(or: "默认值")
 		#expect(result == "默认值")
     }
+	
+	@Test func mapOptional() {
+		let a: Int? = 5
+		let b = a.map { $0 * 2 }
+		#expect(b == 10)
+		
+		let c: Int? = nil
+		let d = c.map { $0 * 2 }
+		#expect(d == nil)
+	}
 }
